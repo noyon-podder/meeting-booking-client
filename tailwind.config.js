@@ -26,6 +26,7 @@ module.exports = {
           lightColor: "#F9FAFB",
           textColor: "#595959",
           baseLightColor: "#0057B8",
+          darkTextColor: "#d3cfcf",
           cardColor: "#111c33",
         },
         background: {},
