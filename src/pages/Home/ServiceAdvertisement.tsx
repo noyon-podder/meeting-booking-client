@@ -1,6 +1,10 @@
-import { FaCalendarAlt, FaCheck } from "react-icons/fa";
-import { FaClock } from "../../icons/ReactIcons";
-import { FaHeadset } from "react-icons/fa6";
+import {
+  FaClock,
+  FaHeadset,
+  FaCalendarAlt,
+  FaCheck,
+} from "../../icons/ReactIcons";
+
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
@@ -47,11 +51,11 @@ const ServiceAdvertisement = () => {
         className="service-advertisement py-10 lg:py-16 light:bg-gray-100"
       >
         <div className="container mx-auto text-center">
-          <h2 className="lg:text-3xl text-2xl font-bold mb-10 text-color-heading dark:text-color-darkHeading">
-            Service Advertisement?
+          <h2 className="lg:text-4xl font-mono text-2xl font-bold lg:mb-14 mb-10 text-color-heading dark:text-color-darkHeading">
+            Service Advertisement
           </h2>
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-8"
             initial="hidden"
             animate={controls}
             exit="exit"
@@ -65,7 +69,7 @@ const ServiceAdvertisement = () => {
           >
             {/* 1st card */}
             <motion.div
-              className="py-10 px-4 bg-white dark:bg-[#111c33] shadow-lg duration-300 rounded-sm hover:shadow-none border border-[#f1f1f1] dark:border-color-darkBaseColor transition-shadow"
+              className="py-10 px-4 bg-white dark:bg-color-cardColor shadow-lg duration-300 rounded-sm hover:shadow-none border border-[#f1f1f1] dark:border-color-darkBaseColor transition-shadow"
               variants={serviceVariants}
             >
               <div className="flex justify-center mb-5">
@@ -85,7 +89,7 @@ const ServiceAdvertisement = () => {
 
             {/* 2nd card */}
             <motion.div
-              className="py-10 px-4 bg-white dark:bg-[#111c33] shadow-lg duration-300 rounded-sm hover:shadow-none border border-[#f1f1f1] dark:border-color-darkBaseColor transition-shadow"
+              className="py-10 px-4 bg-white dark:bg-color-cardColor shadow-lg duration-300 rounded-sm hover:shadow-none border border-[#f1f1f1] dark:border-color-darkBaseColor transition-shadow"
               variants={serviceVariants}
             >
               <div className="flex justify-center mb-5">
@@ -105,7 +109,7 @@ const ServiceAdvertisement = () => {
 
             {/* 3rd card */}
             <motion.div
-              className="py-10 px-4 bg-white dark:bg-[#111c33] shadow-lg duration-300 rounded-sm hover:shadow-none border border-[#f1f1f1] dark:border-color-darkBaseColor transition-shadow"
+              className="py-10 px-4 bg-white dark:bg-color-cardColor shadow-lg duration-300 rounded-sm hover:shadow-none border border-[#f1f1f1] dark:border-color-darkBaseColor transition-shadow"
               variants={serviceVariants}
             >
               <div className="flex justify-center mb-5">
@@ -124,7 +128,7 @@ const ServiceAdvertisement = () => {
 
             {/* 4th card */}
             <motion.div
-              className="py-10 px-4 bg-white dark:bg-[#111c33] shadow-lg duration-300 rounded-sm hover:shadow-none border border-[#f1f1f1] dark:border-color-darkBaseColor transition-shadow"
+              className="py-10 px-4 bg-white dark:bg-color-cardColor shadow-lg duration-300 rounded-sm hover:shadow-none border border-[#f1f1f1] dark:border-color-darkBaseColor transition-shadow"
               variants={serviceVariants}
             >
               <div className="flex justify-center mb-5">
