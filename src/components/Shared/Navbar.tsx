@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import MenuItems from "@/pages/Home/MenuItems";
 import { ModeToggle } from "./ModeToggle";
 import SidebarMenuItems from "@/pages/Home/SidebarMenuItems";
@@ -7,7 +6,7 @@ import Container from "../Container";
 
 const Navbar = () => {
   return (
-    <div className=" dark:border-b dark:bg-transparent py-3 dark:bg-color-darkBaseColor bg-color-baseColor">
+    <div className="sticky top-0 left-0 w-full dark:border-b  py-3 dark:bg-color-darkBaseColor bg-color-baseColor">
       <Container>
         <div className="flex items-center justify-between">
           <Link to="/">
@@ -28,7 +27,9 @@ const Navbar = () => {
             <ModeToggle />
 
             {/* for mobile device menu bar show  */}
-            <SidebarMenuItems />
+            <div className="lg:hidden">
+              <SidebarMenuItems />
+            </div>
           </div>
         </div>
       </Container>
