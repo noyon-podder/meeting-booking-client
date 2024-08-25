@@ -1,4 +1,11 @@
-import { FaFacebookF, FaCalendarAlt, FaCheck } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaCalendarAlt,
+  FaCheck,
+  FaCalendarCheck,
+  FaLock,
+  FaThumbsUp,
+} from "react-icons/fa";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 import {
   FaInstagram,
@@ -8,6 +15,7 @@ import {
   FaHeadset,
 } from "react-icons/fa6";
 import {} from "react-icons/fa6";
+import {} from "react-icons/fa";
 
 export {
   FaFacebookF,
@@ -19,4 +27,7 @@ export {
   FaHeadset,
   FaCheck,
   FaCalendarAlt,
+  FaCalendarCheck,
+  FaLock,
+  FaThumbsUp,
 };

@@ -1,4 +1,4 @@
-import { FaCalendarCheck, FaLock, FaThumbsUp } from "react-icons/fa";
+import { FaCalendarCheck, FaLock, FaThumbsUp } from "../../icons/ReactIcons";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
@@ -40,7 +40,7 @@ const WhyChooseUs = () => {
   return (
     <section
       ref={ref}
-      className="why-choose-us py-10 lg:py-16 light:bg-gray-100 dark:bg-[#111c33]"
+      className="why-choose-us py-10 lg:py-16 bg-color-lightColor dark:bg-color-cardColor"
     >
       <div className="container mx-auto text-center">
         <h2 className="lg:text-4xl text-2xl font-bold lg:mb-10 mb-5 text-color-heading dark:text-color-darkHeading text-center font-mono">
@@ -54,7 +54,7 @@ const WhyChooseUs = () => {
           variants={{
             visible: {
               transition: {
-                staggerChildren: 0.2, // Stagger the fade-in of each service item
+                staggerChildren: 0.2,
               },
             },
           }}
