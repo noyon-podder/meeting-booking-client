@@ -51,7 +51,7 @@ const testimonials = [
     name: "Emily Brown",
     role: "HR Director, People First",
     testimonial:
-      "We’ve streamlined our interview scheduling process with Schedulify. The instant booking confirmation has saved us so much time!",
+      "We’ve streamlined our interview scheduling process with Schedulify. The instant booking confirmation has saved!",
     profilePicture: "https://randomuser.me/api/portraits/women/68.jpg",
   },
   {
