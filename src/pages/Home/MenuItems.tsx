@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const MenuItems = () => {
   return (
     <>
-      <ul className=" items-center gap-3  hidden lg:flex">
+      <ul className=" items-center xl:gap-3 lg:gap-1  hidden lg:flex">
         {menuData.map(({ id, path, text }) => (
           <li key={id}>
             <Link

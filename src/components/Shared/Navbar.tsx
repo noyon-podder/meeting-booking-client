@@ -6,7 +6,7 @@ import Container from "../Container";
 
 const Navbar = () => {
   return (
-    <div className="sticky top-0 left-0 w-full dark:border-b  py-3 dark:bg-color-darkBaseColor bg-color-baseColor">
+    <div className="sticky z-50 top-0 left-0 w-full dark:border-b  py-3 dark:bg-color-darkBaseColor bg-color-baseColor">
       <Container>
         <div className="flex items-center justify-between">
           <Link to="/">

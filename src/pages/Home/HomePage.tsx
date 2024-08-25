@@ -1,11 +1,9 @@
-import Container from "@/components/Container";
+import HeroBanner from "./HeroBanner";
 
 const HomePage = () => {
   return (
     <div className="">
-      <Container>
-        Home page
-      </Container>
+      <HeroBanner />
     </div>
   );
 };

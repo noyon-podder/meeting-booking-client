@@ -10,7 +10,7 @@ import Container from "../Container";
 const Footer = () => {
   return (
     <>
-      <footer className="bg-color-lightColor dark:bg-transparent border-t pt-5 lg:pt-10">
+      <footer className="bg-color-lightColor dark:bg-transparent border-t py-5 lg:py-10">
         <Container>
           <div className="flex flex-col items-center text-center">
             <Link to="/">
@@ -22,26 +22,26 @@ const Footer = () => {
             <div className="flex flex-wrap justify-center mt-6 gap-5">
               <Link
                 to={"/"}
-                className="text-base px-4 py-2 text-color-lightColor bg-transparent transition-colors duration-150 ease-in hover:bg-[#1A4FA0] rounded-[25px] block"
+                className="text-base px-4 py-2 text-color-heading bg-transparent transition-colors duration-150 ease-in hover:bg-[#1A4FA0] hover:text-color-lightColor dark:text-color-lightColor rounded-[25px] block"
               >
                 Home
               </Link>
 
               <Link
                 to={"/meeting-rooms"}
-                className="text-base px-4 py-2 text-color-lightColor bg-transparent transition-colors duration-150 ease-in hover:bg-[#1A4FA0] rounded-[25px] block"
+                className="text-base px-4 py-2 text-color-heading bg-transparent transition-colors duration-150 ease-in hover:bg-[#1A4FA0] hover:text-color-lightColor dark:text-color-lightColor rounded-[25px] block"
               >
                 Meeting Rooms
               </Link>
               <Link
                 to={"/about"}
-                className="text-base px-4 py-2 text-color-lightColor bg-transparent transition-colors duration-150 ease-in hover:bg-[#1A4FA0] rounded-[25px] block"
+                className="text-base px-4 py-2 text-color-heading bg-transparent transition-colors duration-150 ease-in hover:bg-[#1A4FA0] hover:text-color-lightColor dark:text-color-lightColor rounded-[25px] block"
               >
                 About Us
               </Link>
               <Link
                 to={"/contact"}
-                className="text-base px-4 py-2 text-color-lightColor bg-transparent transition-colors duration-150 ease-in hover:bg-[#1A4FA0] rounded-[25px] block"
+                className="text-base px-4 py-2 text-color-heading bg-transparent transition-colors duration-150 ease-in hover:bg-[#1A4FA0] hover:text-color-lightColor dark:text-color-lightColor rounded-[25px] block"
               >
                 Contact Us
               </Link>
