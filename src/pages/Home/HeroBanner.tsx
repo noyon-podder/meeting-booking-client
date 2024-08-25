@@ -1,9 +1,27 @@
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
 
 const HeroBanner = () => {
+  // Set up animation controls
+  const controls = useAnimation();
+
+  // Hook to detect when the section is in view
+  const { ref, inView } = useInView({
+    threshold: 0.2, // Trigger animation when 20% of the section is visible
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [controls, inView]);
+
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative h-screen overflow-hidden" ref={ref}>
       <video
         autoPlay
         loop

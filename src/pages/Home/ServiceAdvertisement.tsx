@@ -65,7 +65,7 @@ const ServiceAdvertisement = () => {
           >
             {/* 1st card */}
             <motion.div
-              className="py-10 px-4 bg-white dark:bg-[#111c33] shadow-lg duration-300 rounded-sm hover:shadow-none border border-[#f1f1f1] transition-shadow"
+              className="py-10 px-4 bg-white dark:bg-[#111c33] shadow-lg duration-300 rounded-sm hover:shadow-none border border-[#f1f1f1] dark:border-color-darkBaseColor transition-shadow"
               variants={serviceVariants}
             >
               <div className="flex justify-center mb-5">
@@ -85,7 +85,7 @@ const ServiceAdvertisement = () => {
 
             {/* 2nd card */}
             <motion.div
-              className="py-10 px-4 bg-white dark:bg-[#111c33] shadow-lg duration-300 rounded-sm hover:shadow-none border border-[#f1f1f1] transition-shadow"
+              className="py-10 px-4 bg-white dark:bg-[#111c33] shadow-lg duration-300 rounded-sm hover:shadow-none border border-[#f1f1f1] dark:border-color-darkBaseColor transition-shadow"
               variants={serviceVariants}
             >
               <div className="flex justify-center mb-5">
@@ -105,7 +105,7 @@ const ServiceAdvertisement = () => {
 
             {/* 3rd card */}
             <motion.div
-              className="py-10 px-4 bg-white dark:bg-[#111c33] shadow-lg duration-300 rounded-sm hover:shadow-none border border-[#f1f1f1] transition-shadow"
+              className="py-10 px-4 bg-white dark:bg-[#111c33] shadow-lg duration-300 rounded-sm hover:shadow-none border border-[#f1f1f1] dark:border-color-darkBaseColor transition-shadow"
               variants={serviceVariants}
             >
               <div className="flex justify-center mb-5">
@@ -124,7 +124,7 @@ const ServiceAdvertisement = () => {
 
             {/* 4th card */}
             <motion.div
-              className="py-10 px-4 bg-white dark:bg-[#111c33] shadow-lg duration-300 rounded-sm hover:shadow-none border border-[#f1f1f1] transition-shadow"
+              className="py-10 px-4 bg-white dark:bg-[#111c33] shadow-lg duration-300 rounded-sm hover:shadow-none border border-[#f1f1f1] dark:border-color-darkBaseColor transition-shadow"
               variants={serviceVariants}
             >
               <div className="flex justify-center mb-5">
