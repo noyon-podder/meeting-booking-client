@@ -1,33 +1,11 @@
-import { ModeToggle } from "@/components/Shared/ModeToggle";
+import { menuData } from "@/data/data";
 import { Link } from "react-router-dom";
 
 const MenuItems = () => {
-  const menu = [
-    {
-      id: 1,
-      path: "/",
-      text: "Home",
-    },
-    {
-      id: 4,
-      path: "/meeting-rooms",
-      text: "Meeting Rooms",
-    },
-    {
-      id: 2,
-      path: "/about",
-      text: "About Us",
-    },
-    {
-      id: 3,
-      path: "/contact",
-      text: "Contact Us",
-    },
-  ];
   return (
     <>
-      <ul className="flex items-center gap-3">
-        {menu.map(({ id, path, text }) => (
+      <ul className=" items-center gap-3  hidden lg:flex">
+        {menuData.map(({ id, path, text }) => (
           <li key={id}>
             <Link
               to={path}
