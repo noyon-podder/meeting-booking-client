@@ -26,6 +26,7 @@ module.exports = {
           lightColor: "#F9FAFB",
           textColor: "#595959",
           baseLightColor: "#0057B8",
+          cardColor: "#111c33",
         },
         background: {},
         border: "hsl(var(--border))",

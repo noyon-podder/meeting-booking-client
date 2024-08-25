@@ -10,7 +10,7 @@ import Container from "../Container";
 const Footer = () => {
   return (
     <>
-      <footer className="bg-color-lightColor dark:bg-transparent border-t py-5 lg:py-10">
+      <footer className="bg-color-lightColor dark:bg-[#0c101b] border-t py-5 lg:py-10">
         <Container>
           <div className="flex flex-col items-center text-center">
             <Link to="/">

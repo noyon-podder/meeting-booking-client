@@ -11,8 +11,7 @@ const HeroBanner = () => {
         className="absolute top-0 left-0 w-full h-full object-cover"
       >
         <source
-          //   src="https://videos.pexels.com/video-files/3586173/3586173-hd_1920_1080_25fps.mp4"
-          src="https://cdn.pixabay.com/video/2015/10/27/1191-143842658_large.mp4"
+          src="https://videos.pexels.com/video-files/3191887/3191887-uhd_2560_1440_25fps.mp4"
           type="video/mp4"
         />
         Your browser does not support the video tag.
