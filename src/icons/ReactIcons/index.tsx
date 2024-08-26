@@ -14,8 +14,9 @@ import {
   FaClock,
   FaHeadset,
 } from "react-icons/fa6";
-import {} from "react-icons/fa6";
-import {} from "react-icons/fa";
+
+import { BsQuote } from "react-icons/bs";
+import { IoMdQuote } from "react-icons/io";
 
 export {
   FaFacebookF,
@@ -30,4 +31,6 @@ export {
   FaCalendarCheck,
   FaLock,
   FaThumbsUp,
+  BsQuote,
+  IoMdQuote,
 };
