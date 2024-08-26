@@ -11,11 +11,13 @@ type TUser = {
 type TAuthState = {
   user: TUser | null;
   token: string | null;
+  isModalOpen: boolean;
 };
 
 const initialState: TAuthState = {
   user: null,
   token: null,
+  isModalOpen: true,
 };
 
 export const authSlice = createSlice({
@@ -34,12 +36,17 @@ export const authSlice = createSlice({
       state.user = null;
       state.token = null;
     },
+
+    setModalOpen: (state, action) => {
+      state.isModalOpen = action.payload;
+    },
   },
 });
 
-export const { setUser, logout } = authSlice.actions;
+export const { setUser, logout, setModalOpen } = authSlice.actions;
 
 export const currentUser = (state: RootState) => state.auth.user;
 export const currentToken = (state: RootState) => state.auth.token;
+export const modalOpen = (state: RootState) => state.auth.isModalOpen;
 
 export default authSlice.reducer;
