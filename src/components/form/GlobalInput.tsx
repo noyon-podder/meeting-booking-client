@@ -20,7 +20,7 @@ const GlobalInput = ({
   const { register } = useFormContext();
 
   return (
-    <div className="mb-5 grid w-full max-w-sm items-center gap-4">
+    <div className="mb-5  grid w-full  items-center gap-4">
       {label ? <Label htmlFor={name}>{label}</Label> : null}
       <Input
         type={type}

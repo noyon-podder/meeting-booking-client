@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const HeroBanner = () => {
   // Set up animation controls
@@ -49,12 +50,14 @@ const HeroBanner = () => {
             Efficient, hassle-free room booking for all your meeting needs.
           </p>
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-            <Button
-              size="lg"
-              className="bg-color-baseLightColor hover:bg-color-baseColor text-white text-[20px] font-medium py-6 "
-            >
-              Book Now
-            </Button>
+            <Link to="meeting-rooms">
+              <Button
+                size="lg"
+                className="bg-color-baseLightColor hover:bg-color-baseColor text-white text-[20px] font-medium py-6 "
+              >
+                Book Now
+              </Button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

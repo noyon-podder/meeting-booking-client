@@ -20,7 +20,7 @@ const Navbar = () => {
           <div className="flex items-center lg:gap-6 gap-2">
             <Link
               to="/register"
-              className="text-base px-3 py-2 text-color-lightColor bg-transparent transition-colors duration-150 ease-in hover:bg-[#1A4FA0] rounded-[25px] block "
+              className="px-[16px] py-[5px] text-color-baseColor font-semibold rounded-[2px] hover:bg-color-darkHeading block bg-white"
             >
               Register
             </Link>
