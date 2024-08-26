@@ -14,7 +14,7 @@ const SubBanner: React.FC<SubBannerProps> = ({
   breadcrumb,
   backgroundImage,
 }) => {
-  const [controls, ref] = useScrollAnimation();
+  const [, ref] = useScrollAnimation();
   return (
     <div
       ref={ref}

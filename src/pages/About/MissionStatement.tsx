@@ -10,7 +10,7 @@ const MissionSection = () => {
   return (
     <section
       ref={ref}
-      className="mission-section py-16 bg-white dark:bg-gray-900"
+      className="mission-section py-16 bg-white dark:bg-color-cardColor"
     >
       <Container>
         <div className="flex flex-col md:flex-row items-center">

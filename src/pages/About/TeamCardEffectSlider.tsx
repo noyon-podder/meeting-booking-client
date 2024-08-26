@@ -26,10 +26,10 @@ const TeamCardEffectSlider = () => {
         className="mySwiper"
         loop={true}
       >
-        {teamMembers.map((member, index) => (
+        {teamMembers.map((member) => (
           <SwiperSlide>
             <motion.div
-              key={index}
+              key={member.id}
               className="team-member bg-color-lightColor dark:bg-color-darkBaseColor text-center border border-color-darkHeading dark:border-color-baseColor shadow-lg rounded-lg p-6"
               variants={itemVariants}
             >

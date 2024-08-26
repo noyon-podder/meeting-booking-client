@@ -66,30 +66,35 @@ const testimonials = [
 
 const teamMembers = [
   {
+    id: 1,
     name: "John Doe",
     role: "Founder & CEO",
     bio: "John is the visionary behind Schedulify with a passion for innovation.",
     img: "/team/1.jpg",
   },
   {
+    id: 2,
     name: "Jane Smith",
     role: "Chief Technology Officer",
     bio: "Jane leads the tech team with her extensive experience in software engineering.",
     img: "/team/2.jpg",
   },
   {
+    id: 3,
     name: "Alice Johnson",
     role: "Head of Design",
     bio: "Alice brings creativity and design expertise to every project.",
     img: "/team/3.jpg",
   },
   {
+    id: 4,
     name: "Bob Brown",
     role: "Marketing Director",
     bio: "Bob’s marketing strategies are the driving force behind our growth.",
     img: "/team/4.jpg",
   },
   {
+    id: 5,
     name: "Harry Broke",
     role: "Business Manager",
     bio: "Bob’s marketing strategies are the driving force behind our growth.",
