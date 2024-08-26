@@ -4,15 +4,18 @@ import Navbar from "@/components/Shared/Navbar";
 import { Button } from "@/components/ui/button";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import backgroundImage from "/register.png";
+import { Link } from "react-router-dom";
+
 const Register = () => {
   const handleRegisterFormSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
   };
+
   return (
     <>
       <Navbar />
       <div
-        className="w-full flex items-center justify-center "
+        className="w-full flex lg:mt-0 mt-10 items-center justify-center "
         style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
@@ -33,13 +36,13 @@ const Register = () => {
           <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
             <div className="flex justify-center mx-auto">
               <h2 className="dark:text-white text-color-baseColor lg:text-[32px] text-[22px] font-bold font-mono">
-                ScheduliFy
+                Sign Up
               </h2>
             </div>
 
-            <p className=" text-xl text-center text-gray-600 dark:text-gray-200">
+            {/* <p className=" text-xl text-center text-gray-600 dark:text-gray-200">
               Welcome back!
-            </p>
+            </p> */}
 
             {/* register form  */}
             <div className="mt-6 w-full">
@@ -84,6 +87,15 @@ const Register = () => {
                 </Button>
               </GlobalForm>
             </div>
+            <p className="dark:text-color-darkHeading text-color-textColor mt-4 text-center">
+              Already have an account?{" "}
+              <Link
+                to="/login"
+                className="text-color-baseColor hover:underline ml-2"
+              >
+                Login
+              </Link>
+            </p>
           </div>
         </div>
       </div>

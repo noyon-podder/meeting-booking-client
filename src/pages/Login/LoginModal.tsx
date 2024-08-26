@@ -9,17 +9,24 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { FieldValues } from "react-hook-form";
+import { setModalOpen } from "@/redux/features/auth/authSlice";
+import { useAppDispatch } from "@/redux/hook";
+import { FieldValues, SubmitHandler } from "react-hook-form";
 
 type TLoginModalProps = {
   isOpen: boolean;
-  onClose: () => void;
-  onLogin: (data: FieldValues) => void;
+  // onClose: () => void;
+  // onLogin: (data: FieldValues) => void;
 };
 
-const LoginModal = ({ isOpen, onClose, onLogin }: TLoginModalProps) => {
+const LoginModal = ({ isOpen }: TLoginModalProps) => {
+  const dispatch = useAppDispatch();
+  const handleLoginModalSubmit: SubmitHandler<FieldValues> = (data) => {
+    console.log(data);
+    dispatch(setModalOpen(false));
+  };
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
+    <Dialog open={isOpen}>
       <DialogTrigger>
         <Button type="submit">Login</Button>
       </DialogTrigger>
@@ -27,7 +34,7 @@ const LoginModal = ({ isOpen, onClose, onLogin }: TLoginModalProps) => {
         <DialogHeader>
           <DialogTitle className="text-center mb-5 text-3xl">Login</DialogTitle>
           <DialogDescription>
-            <GlobalForm onSubmit={onLogin}>
+            <GlobalForm onSubmit={handleLoginModalSubmit}>
               <GlobalInput
                 type="text"
                 placeholder="Enter your email address"

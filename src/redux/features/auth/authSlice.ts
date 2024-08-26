@@ -17,7 +17,7 @@ type TAuthState = {
 const initialState: TAuthState = {
   user: null,
   token: null,
-  isModalOpen: true,
+  isModalOpen: false,
 };
 
 export const authSlice = createSlice({
