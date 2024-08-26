@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 const NewsletterSignup = () => {
   const [email, setEmail] = useState("");
 
-  const handleSignup = (e) => {
+  const handleSignup = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle the signup logic here
     console.log("Email submitted:", email);
   };
 

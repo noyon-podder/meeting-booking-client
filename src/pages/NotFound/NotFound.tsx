@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const NotFound = () => {
   return (
     <div className="flex items-center justify-center h-screen w-full flex-col">
-      <h2 className="lg:text-[140px] leading-[145px] text-[80px] font-extrabold text-color-heading">
+      <h2 className="lg:text-[140px] xl:text-[180px] leading-[145px] xl:leading-[185px] mb-5 text-[80px] font-extrabold text-color-heading dark:text-color-darkHeading">
         404
       </h2>
       <p className="text-lg text-headingColor font-semibold">
