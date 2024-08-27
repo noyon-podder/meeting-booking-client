@@ -7,10 +7,35 @@ import backgroundImage from "/register.png";
 import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import registerSchema from "@/schema/regsiterSchema";
+import { useCreateUserMutation } from "@/redux/features/auth/authApi";
+import toast from "react-hot-toast";
+import { Loader2 } from "lucide-react";
 
 const Register = () => {
-  const handleRegisterFormSubmit: SubmitHandler<FieldValues> = (data) => {
+  const [createUser, { isLoading }] = useCreateUserMutation();
+
+  const handleRegisterFormSubmit: SubmitHandler<FieldValues> = async (data) => {
     console.log(data);
+
+    const userData = {
+      ...data,
+      phone: data.phoneNumber,
+    };
+
+    try {
+      const res = await createUser(userData);
+
+      console.log(res);
+
+      if (res.error) {
+        toast.error(res.error.data.message);
+      } else {
+        toast.success("Registration Successfully ☺");
+      }
+      console.log(res);
+    } catch (err) {
+      toast.error("Something went wrong");
+    }
   };
 
   return (
@@ -41,10 +66,6 @@ const Register = () => {
                 Sign Up
               </h2>
             </div>
-
-            {/* <p className=" text-xl text-center text-gray-600 dark:text-gray-200">
-              Welcome back!
-            </p> */}
 
             {/* register form  */}
             <div className="mt-6 w-full">
@@ -84,12 +105,26 @@ const Register = () => {
                   label="Address"
                   className="w-full"
                 />
-                <Button
-                  type="submit"
-                  className="w-full bg-color-baseColor text-white hover:bg-color-baseLightColor"
-                >
-                  Submit
-                </Button>
+                {isLoading ? (
+                  <>
+                    <Button
+                      disabled
+                      className="w-full bg-color-baseColor text-white"
+                    >
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Please wait
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      type="submit"
+                      className="w-full bg-color-baseColor text-white hover:bg-color-baseLightColor"
+                    >
+                      Submit
+                    </Button>
+                  </>
+                )}
               </GlobalForm>
             </div>
             <p className="dark:text-color-darkHeading text-color-textColor mt-4 text-center">
