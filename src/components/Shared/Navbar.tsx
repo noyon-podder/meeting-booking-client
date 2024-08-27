@@ -3,6 +3,9 @@ import MenuItems from "@/pages/Home/MenuItems";
 import { ModeToggle } from "./ModeToggle";
 import SidebarMenuItems from "@/pages/Home/SidebarMenuItems";
 import Container from "../Container";
+import { Button } from "../ui/button";
+import { useAppDispatch } from "@/redux/hook";
+import { logout } from "@/redux/features/auth/authSlice";
 // import LoginModal from "@/pages/Login/LoginModal";
 // import { useAppDispatch, useAppSelector } from "@/redux/hook";
 // import { modalOpen, setModalOpen } from "@/redux/features/auth/authSlice";
@@ -20,6 +23,12 @@ const Navbar = () => {
   //   console.log(data);
   //   dispatch(setModalOpen(false));
   // };
+
+  // handle log out functionality
+  const dispatch = useAppDispatch();
+  const handelLogout = () => {
+    dispatch(logout());
+  };
   return (
     <div className="sticky z-50 top-0 left-0 w-full dark:border-b lg:h-[85px]  py-4 dark:bg-color-darkBaseColor bg-color-baseColor">
       <Container>
@@ -39,6 +48,8 @@ const Navbar = () => {
             >
               Register
             </Link>
+
+            <Button onClick={handelLogout}>Logout</Button>
 
             <ModeToggle />
 
