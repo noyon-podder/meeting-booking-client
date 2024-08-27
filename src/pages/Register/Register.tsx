@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import backgroundImage from "/register.png";
 import { Link } from "react-router-dom";
+import { zodResolver } from "@hookform/resolvers/zod";
+import registerSchema from "@/schema/regsiterSchema";
 
 const Register = () => {
   const handleRegisterFormSubmit: SubmitHandler<FieldValues> = (data) => {
@@ -46,7 +48,10 @@ const Register = () => {
 
             {/* register form  */}
             <div className="mt-6 w-full">
-              <GlobalForm onSubmit={handleRegisterFormSubmit}>
+              <GlobalForm
+                onSubmit={handleRegisterFormSubmit}
+                resolver={zodResolver(registerSchema)}
+              >
                 <GlobalInput
                   name="name"
                   type="text"
@@ -91,7 +96,7 @@ const Register = () => {
               Already have an account?{" "}
               <Link
                 to="/login"
-                className="text-color-baseColor hover:underline ml-2"
+                className="text-color-baseLightColor hover:underline ml-2"
               >
                 Login
               </Link>

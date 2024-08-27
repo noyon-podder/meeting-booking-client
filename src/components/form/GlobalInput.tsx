@@ -1,6 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
+import { cn } from "@/lib/utils";
 
 type TGlobalInputProps = {
   name: string;
@@ -17,18 +18,39 @@ const GlobalInput = ({
   className,
   label,
 }: TGlobalInputProps) => {
-  const { register } = useFormContext();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
+  const isError = !!errors[name];
+  console.log(errors[name]);
   return (
-    <div className="mb-5  grid w-full  items-center gap-4">
-      {label ? <Label htmlFor={name}>{label}</Label> : null}
+    <div className="mb-5  ">
+      {label ? (
+        <Label htmlFor={name} className="mb-3 block">
+          {label}
+        </Label>
+      ) : null}
       <Input
         type={type}
         placeholder={placeholder}
         id={name}
         {...register(name)}
-        className={className}
+        className={cn(
+          className,
+
+          isError
+            ? "border-red-500 dark:border-red-700"
+            : "focus:dark:border-color-baseLightColor focus:border-color-baseColor  "
+          //
+        )}
       />
+      {isError && (
+        <p className="text-red-500 mt-1 dark:text-red-700 text-sm ">
+          {errors[name]?.message as string}{" "}
+        </p>
+      )}
     </div>
   );
 };
