@@ -20,7 +20,7 @@ const Register = () => {
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "calc(100vh - 78px)",
+          height: "calc(100vh - 85px)",
         }}
       >
         <div className="border flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-color-cardColor lg:max-w-5xl">

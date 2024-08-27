@@ -20,7 +20,7 @@ const Login = () => {
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "calc(100vh - 78px)",
+          height: "calc(100vh - 85px)",
         }}
       >
         <div className="max-w-[500px] w-full py-10 px-6 border bg-white dark:bg-color-cardColor rounded">
