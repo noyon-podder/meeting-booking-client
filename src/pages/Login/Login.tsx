@@ -4,11 +4,41 @@ import Navbar from "@/components/Shared/Navbar";
 import { Button } from "@/components/ui/button";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import backgroundImage from "/register.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { zodResolver } from "@hookform/resolvers/zod";
+import loginValidationSchema from "@/schema/loginValidationSchema";
+import { Loader2 } from "lucide-react";
+import toast from "react-hot-toast";
+import { useLoginMutation } from "@/redux/features/auth/authApi";
 
 const Login = () => {
-  const handleLoginForm: SubmitHandler<FieldValues> = (data) => {
+  const [userLogin, { isLoading }] = useLoginMutation();
+  const navigate = useNavigate();
+
+  const handleLoginForm: SubmitHandler<FieldValues> = async (data) => {
     console.log("Login from : ", data);
+
+    const userData = {
+      email: data.email,
+      password: data.password,
+    };
+
+    try {
+      const res = await userLogin(userData);
+
+      console.log(res);
+
+      if (res.error) {
+        toast.error(res.error.data.message);
+      } else {
+        toast.success("Login Successfully ☺");
+        navigate("/");
+      }
+      console.log(res);
+    } catch (err) {
+      toast.error("Something went wrong");
+      console.log(err);
+    }
   };
 
   return (
@@ -29,7 +59,10 @@ const Login = () => {
               Login
             </h2>
           </div>
-          <GlobalForm onSubmit={handleLoginForm}>
+          <GlobalForm
+            onSubmit={handleLoginForm}
+            resolver={zodResolver(loginValidationSchema)}
+          >
             <GlobalInput
               type="text"
               placeholder="Email"
@@ -45,12 +78,26 @@ const Login = () => {
               label="Password"
             />
 
-            <Button
-              type="submit"
-              className="w-full bg-color-baseColor text-white hover:bg-color-baseLightColor"
-            >
-              Submit
-            </Button>
+            {isLoading ? (
+              <>
+                <Button
+                  disabled
+                  className="w-full bg-color-baseColor text-white"
+                >
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Please wait
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  type="submit"
+                  className="w-full bg-color-baseColor text-white hover:bg-color-baseLightColor"
+                >
+                  Submit
+                </Button>
+              </>
+            )}
           </GlobalForm>
 
           <p className="dark:text-color-darkHeading text-color-textColor mt-7 text-center">

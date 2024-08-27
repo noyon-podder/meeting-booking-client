@@ -6,7 +6,7 @@ import { FieldValues, SubmitHandler } from "react-hook-form";
 import backgroundImage from "/register.png";
 import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
-import registerSchema from "@/schema/regsiterSchema";
+import registerSchema from "@/schema/regsiterValidationSchema";
 import { useCreateUserMutation } from "@/redux/features/auth/authApi";
 import toast from "react-hot-toast";
 import { Loader2 } from "lucide-react";
