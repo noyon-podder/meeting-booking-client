@@ -15,21 +15,20 @@ import { FieldValues, SubmitHandler } from "react-hook-form";
 
 type TLoginModalProps = {
   isOpen: boolean;
-  // onClose: () => void;
+  onClose: () => void;
   // onLogin: (data: FieldValues) => void;
 };
 
-const LoginModal = ({ isOpen }: TLoginModalProps) => {
+const LoginModal = ({ isOpen, onClose }: TLoginModalProps) => {
   const dispatch = useAppDispatch();
+
   const handleLoginModalSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
-    dispatch(setModalOpen(false));
+    // const accessToken = "dummy_token"; // Replace with actual token from API response
+    // dispatch(setAccessToken(accessToken));
+    onClose();
   };
   return (
-    <Dialog open={isOpen}>
-      <DialogTrigger>
-        <Button type="submit">Login</Button>
-      </DialogTrigger>
+    <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="text-center mb-5 text-3xl">Login</DialogTitle>
