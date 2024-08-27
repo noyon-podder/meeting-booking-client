@@ -10,10 +10,19 @@ import loginValidationSchema from "@/schema/loginValidationSchema";
 import { Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
+import { useAppDispatch } from "@/redux/hook";
+import { setUser } from "@/redux/features/auth/authSlice";
+import { verifyToken } from "@/utils/verifyToken";
 
 const Login = () => {
   const [userLogin, { isLoading }] = useLoginMutation();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const defaultValues = {
+    email: "web.programming12.6@gmail.com",
+    password: "123456",
+  };
 
   const handleLoginForm: SubmitHandler<FieldValues> = async (data) => {
     console.log("Login from : ", data);
@@ -25,6 +34,15 @@ const Login = () => {
 
     try {
       const res = await userLogin(userData);
+
+      const user = verifyToken(res.data.token);
+
+      const currentUser = {
+        user: user,
+        token: res.data?.token,
+      };
+
+      dispatch(setUser(currentUser));
 
       console.log(res);
 
@@ -62,6 +80,7 @@ const Login = () => {
           <GlobalForm
             onSubmit={handleLoginForm}
             resolver={zodResolver(loginValidationSchema)}
+            defaultValues={defaultValues}
           >
             <GlobalInput
               type="text"
