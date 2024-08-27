@@ -4,7 +4,7 @@ import Navbar from "@/components/Shared/Navbar";
 import { Button } from "@/components/ui/button";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import backgroundImage from "/register.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import registerSchema from "@/schema/regsiterSchema";
 import { useCreateUserMutation } from "@/redux/features/auth/authApi";
@@ -13,10 +13,9 @@ import { Loader2 } from "lucide-react";
 
 const Register = () => {
   const [createUser, { isLoading }] = useCreateUserMutation();
+  const navigate = useNavigate();
 
   const handleRegisterFormSubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log(data);
-
     const userData = {
       ...data,
       phone: data.phoneNumber,
@@ -31,10 +30,12 @@ const Register = () => {
         toast.error(res.error.data.message);
       } else {
         toast.success("Registration Successfully ☺");
+        navigate("/login");
       }
       console.log(res);
     } catch (err) {
       toast.error("Something went wrong");
+      console.log(err);
     }
   };
 
