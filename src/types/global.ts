@@ -8,11 +8,11 @@ export type TUser = {
 };
 
 export type TRoom = {
-  id: string;
+  _id: string;
   name: string;
   description: string;
   capacity: number;
   pricePerSlot: number;
-  imageUrl: string;
+  images: string[];
   amenities: string[]; // List of amenities like 'Projector', 'Whiteboard', etc.
 };
