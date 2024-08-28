@@ -1,5 +1,4 @@
 import Container from "@/components/Container";
-import { IoSearch } from "../../icons/ReactIcons";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { setSearchTerm, setSort } from "@/redux/features/rooms/roomSlice";
 
@@ -25,18 +24,18 @@ const MeetingRoomHeader = () => {
             <div className="w-full h-[50px] flex items-center">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Search Room Name or Keyword"
                 value={searchTerm}
                 onChange={(e) => dispatch(setSearchTerm(e.target.value))}
                 className="w-full  h-[50px] bg-color-lightColor dark:bg-color-darkBaseColor dark:border-color-baseColor  px-4 py-2 rounded-l-md focus:outline-none border border-gray-300 "
                 required
               />
-              <button
+              {/* <button
                 type="submit"
                 className=" bg-color-baseColor flex items-center justify-center w-[50px] h-[50px] text-white rounded-r-md hover:bg-color-baseLightColor transition duration-300 dark:bg-blue-500 dark:hover:bg-blue-600"
               >
                 <IoSearch />
-              </button>
+              </button> */}
             </div>
           </div>
 

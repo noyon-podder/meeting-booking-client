@@ -1,15 +1,22 @@
 import { useState } from "react";
 import { TRoom } from "@/types";
 import { Link } from "react-router-dom";
+import useScrollAnimation from "@/hooks/useScrollAnimation";
+import { motion } from "framer-motion";
+import { fadeVariants } from "@/utils/variants";
 
 type RoomCardProps = {
   room: TRoom;
 };
 
 const RoomCard = ({ room }: RoomCardProps) => {
+  const [controls, ref] = useScrollAnimation();
   const [isHovered, setIsHovered] = useState(false);
   return (
-    <div
+    <motion.div
+      ref={ref}
+      animate={controls}
+      variants={fadeVariants}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="border bg-color-lightColor dark:bg-color-cardColor"
@@ -58,7 +65,7 @@ const RoomCard = ({ room }: RoomCardProps) => {
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

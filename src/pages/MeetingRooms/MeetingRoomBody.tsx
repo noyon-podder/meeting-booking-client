@@ -11,10 +11,13 @@ import {
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { TRoom } from "@/types";
 import { useDebounce } from "use-debounce";
+import { motion } from "framer-motion";
+import useScrollAnimation from "@/hooks/useScrollAnimation";
+import { fadeVariants } from "@/utils/variants";
 
 const MeetingRoomBody = () => {
   const dispatch = useAppDispatch();
-
+  const [controls, ref] = useScrollAnimation();
   const searchTerm = useAppSelector((state) => state.room.searchTerm);
   const sort = useAppSelector((state) => state.room.sort);
   const capacity = useAppSelector((state) => state.room.capacity);
@@ -84,7 +87,7 @@ const MeetingRoomBody = () => {
               </div>
             </div>
           </div>
-          <div className="w-full">
+          <div className="w-full" ref={ref}>
             {roomData?.data?.length <= 0 && (
               <h2 className="dark:text-white text-color-heading text-2xl text-center py-5">
                 No Data Found
@@ -94,11 +97,15 @@ const MeetingRoomBody = () => {
             {isFetching ? (
               <ProductLoadingSkeleton />
             ) : (
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+              <motion.div
+                animate={controls}
+                variants={fadeVariants}
+                className="grid grid-cols-1 lg:grid-cols-3 gap-5"
+              >
                 {roomData?.data?.map((room: TRoom) => (
                   <RoomCard key={room._id} room={room} />
                 ))}
-              </div>
+              </motion.div>
             )}
           </div>
         </div>
