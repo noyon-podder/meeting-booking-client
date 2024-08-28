@@ -1,7 +1,7 @@
 import Container from "@/components/Container";
 import { IoSearch } from "../../icons/ReactIcons";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { setSearchTerm } from "@/redux/features/rooms/roomSlice";
+import { setSearchTerm, setSort } from "@/redux/features/rooms/roomSlice";
 
 const MeetingRoomHeader = () => {
   const searchTerm = useAppSelector((state) => state.room.searchTerm);
@@ -43,15 +43,16 @@ const MeetingRoomHeader = () => {
             {/* sorting selection */}
             <div className="flex gap-1 justify-end">
               <select
+                onChange={(e) => dispatch(setSort(e.target.value))}
                 name=""
                 id=""
                 className="outline-none bg-[#f4f4f4] dark:bg-color-cardColor px-[15px] h-[30px] max-w-[145px] text-sm cursor-pointer border-none leading-[30px]"
               >
                 <option>Sort By</option>
-                <option value="price-descending">Price, low to high</option>
-                <option value="price-ascending">Price, high to low</option>
-                <option value="created-ascending">Newest</option>
-                <option value="created-descending">Oldest</option>
+                <option value="priceAsc">Price, low to high</option>
+                <option value="priceDesc">Price, high to low</option>
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
               </select>
             </div>
           </div>
