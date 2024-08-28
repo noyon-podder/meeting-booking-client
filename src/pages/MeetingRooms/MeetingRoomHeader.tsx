@@ -5,6 +5,7 @@ import { setSearchTerm, setSort } from "@/redux/features/rooms/roomSlice";
 
 const MeetingRoomHeader = () => {
   const searchTerm = useAppSelector((state) => state.room.searchTerm);
+  const length = useAppSelector((state) => state.room.length);
 
   const dispatch = useAppDispatch();
   return (
@@ -15,7 +16,7 @@ const MeetingRoomHeader = () => {
           <div className=" hidden lg:block xl:w-[250px] lg:w-[190px]">
             <h2 className="text-base font-medium text-color-heading dark:text-color-darkHeading">
               {" "}
-              20 items
+              {length} items
             </h2>
           </div>
 

@@ -6,6 +6,7 @@ type TRoomSliceState = {
   capacity: number;
   minPrice: number;
   maxPrice: number;
+  length: string;
 };
 
 const initialState: TRoomSliceState = {
@@ -14,6 +15,7 @@ const initialState: TRoomSliceState = {
   capacity: 0,
   minPrice: 10,
   maxPrice: 1000,
+  length: "",
 };
 
 const roomSlice = createSlice({
@@ -38,10 +40,19 @@ const roomSlice = createSlice({
     setMaxPrice: (state, action) => {
       state.maxPrice = action.payload;
     },
+    setLength: (state, action) => {
+      state.length = action.payload;
+    },
   },
 });
 
-export const { setSearchTerm, setSort, setCapacity, setMinPrice, setMaxPrice } =
-  roomSlice.actions;
+export const {
+  setSearchTerm,
+  setSort,
+  setCapacity,
+  setMinPrice,
+  setMaxPrice,
+  setLength,
+} = roomSlice.actions;
 
 export default roomSlice.reducer;

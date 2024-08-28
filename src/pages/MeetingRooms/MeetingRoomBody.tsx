@@ -4,6 +4,7 @@ import RoomCard from "@/components/RoomCard";
 import { useGetAllRoomsQuery } from "@/redux/features/rooms/roomApi";
 import {
   setCapacity,
+  setLength,
   setMaxPrice,
   setMinPrice,
 } from "@/redux/features/rooms/roomSlice";
@@ -36,6 +37,8 @@ const MeetingRoomBody = () => {
     sort,
   });
   console.log(searchTerm, isFetching);
+
+  dispatch(setLength(roomData?.data?.length));
 
   if (error) return <div>Error loading rooms</div>;
 
