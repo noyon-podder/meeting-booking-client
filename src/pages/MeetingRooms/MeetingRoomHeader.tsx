@@ -5,9 +5,9 @@ const MeetingRoomHeader = () => {
   return (
     <div className="py-4 border-b">
       <Container>
-        <div className="flex items-center justify-between gap-20">
+        <div className="flex items-center justify-between gap-10">
           {/* total card show length */}
-          <div className=" hidden lg:block xl:w-[200px] lg:w-[150px]">
+          <div className=" hidden lg:block xl:w-[250px] lg:w-[190px]">
             <h2 className="text-base font-medium text-color-heading dark:text-color-darkHeading">
               {" "}
               20 items
@@ -15,7 +15,7 @@ const MeetingRoomHeader = () => {
           </div>
 
           {/* search div */}
-          <div className=" flex-1 xl:max-w-[600px]">
+          <div className=" flex-1 w-full">
             <div className="w-full h-[50px] flex items-center">
               <input
                 type="email"
@@ -34,11 +34,11 @@ const MeetingRoomHeader = () => {
 
           <div className=" lg:w-[150px] xl:w-[200px]">
             {/* sorting selection */}
-            <div className="flex gap-1 items-center">
+            <div className="flex gap-1 justify-end">
               <select
                 name=""
                 id=""
-                className="outline-none bg-color-lightColor dark:bg-color-cardColor px-[15px] h-[30px] max-w-[145px] text-sm cursor-pointer border-none leading-[30px]"
+                className="outline-none bg-[#f4f4f4] dark:bg-color-cardColor px-[15px] h-[30px] max-w-[145px] text-sm cursor-pointer border-none leading-[30px]"
               >
                 <option>Sort By</option>
                 <option value="price-descending">Price, low to high</option>
