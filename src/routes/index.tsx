@@ -2,9 +2,11 @@ import MainLayout from "@/components/Layout/MainLayout";
 import ProtectedRoute from "@/components/Layout/ProtectedRoute";
 import AboutPage from "@/pages/About/AboutPage";
 import ContactPage from "@/pages/Contact/ContactPage";
+import Dashboard from "@/pages/Dashboard/Dashboard";
 import HomePage from "@/pages/Home/HomePage";
 import Login from "@/pages/Login/Login";
 import MeetingRoomsPage from "@/pages/MeetingRooms/MeetingRoomsPage";
+import MyBookings from "@/pages/MyBookins/MyBookings";
 import NotFound from "@/pages/NotFound/NotFound";
 import Register from "@/pages/Register/Register";
 import { createBrowserRouter } from "react-router-dom";
@@ -40,9 +42,21 @@ export const router = createBrowserRouter([
       },
       {
         path: "/meeting-rooms",
+        element: <MeetingRoomsPage />,
+      },
+      {
+        path: "/my-bookings",
         element: (
-          <ProtectedRoute>
-            <MeetingRoomsPage />
+          <ProtectedRoute role="user">
+            <MyBookings />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <ProtectedRoute role="admin">
+            <Dashboard />
           </ProtectedRoute>
         ),
       },

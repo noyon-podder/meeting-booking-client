@@ -3,15 +3,13 @@ import MenuItems from "@/pages/Home/MenuItems";
 import { ModeToggle } from "./ModeToggle";
 import SidebarMenuItems from "@/pages/Home/SidebarMenuItems";
 import Container from "../Container";
-import { Button } from "../ui/button";
+
 import { useAppSelector } from "@/redux/hook";
 import { currentUser } from "@/redux/features/auth/authSlice";
 import Avatar from "./ProfileAvatar";
 
 const Navbar = () => {
   const user = useAppSelector(currentUser);
-
-  console.log(user?.userId);
 
   return (
     <div className="sticky z-50 top-0 left-0 w-full dark:border-b lg:h-[85px]  py-4 dark:bg-color-darkBaseColor bg-color-baseColor">

@@ -9,6 +9,7 @@ import Image from "/avatar.png";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { currentUser, logout } from "@/redux/features/auth/authSlice";
+import toast from "react-hot-toast";
 
 const ProfileAvatar = () => {
   const user = useAppSelector(currentUser);
@@ -16,6 +17,7 @@ const ProfileAvatar = () => {
   // handle log out functionality
   const dispatch = useAppDispatch();
   const handelLogout = () => {
+    toast.success("Logged out");
     dispatch(logout());
   };
   return (

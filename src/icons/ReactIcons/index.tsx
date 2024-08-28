@@ -14,7 +14,7 @@ import {
   FaClock,
   FaHeadset,
 } from "react-icons/fa6";
-
+import { IoSearch } from "react-icons/io5";
 import { BsQuote } from "react-icons/bs";
 import { IoMdQuote } from "react-icons/io";
 
@@ -33,4 +33,5 @@ export {
   FaThumbsUp,
   BsQuote,
   IoMdQuote,
+  IoSearch,
 };

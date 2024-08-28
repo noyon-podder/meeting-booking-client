@@ -7,10 +7,8 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
-import { setModalOpen } from "@/redux/features/auth/authSlice";
-import { useAppDispatch } from "@/redux/hook";
+
 import { FieldValues, SubmitHandler } from "react-hook-form";
 
 type TLoginModalProps = {
@@ -20,11 +18,10 @@ type TLoginModalProps = {
 };
 
 const LoginModal = ({ isOpen, onClose }: TLoginModalProps) => {
-  const dispatch = useAppDispatch();
-
   const handleLoginModalSubmit: SubmitHandler<FieldValues> = (data) => {
     // const accessToken = "dummy_token"; // Replace with actual token from API response
     // dispatch(setAccessToken(accessToken));
+    console.log(data);
     onClose();
   };
   return (

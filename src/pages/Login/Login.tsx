@@ -63,7 +63,7 @@ const Login = () => {
     <>
       <Navbar />
       <div
-        className="w-full flex items-center justify-center "
+        className="w-full flex items-center justify-center p-5"
         style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
