@@ -1,23 +1,26 @@
 import { baseApi } from "@/redux/api/baseApi";
+// import { TGetRoomsParams, TRoom } from "@/types";
 
 const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    // createUser: builder.mutation({
-    //   query: (userData) => ({
-    //     url: "/auth/signup",
-    //     method: "POST",
-    //     body: userData,
-    //   }),
-    // }),
+    getAllRooms: builder.query({
+      query: (params) => {
+        console.log({ params });
+        const urlParams = new URLSearchParams();
 
-    getAllProduct: builder.query({
-      query: () => ({
-        url: "/rooms",
-        method: "GET",
-      }),
-      // providesTags: ["Product"],
+        Object.entries(params).forEach(([key, value]) => {
+          if (value !== undefined && value !== null && value !== "") {
+            urlParams.append(key, value.toString());
+          }
+        });
+
+        console.log(`rooms?${urlParams.toString()}`);
+
+        console.log({ urlParams });
+        return `rooms?${urlParams.toString()}`;
+      },
     }),
   }),
 });
 
-export const { useGetAllProductQuery } = authApi;
+export const { useGetAllRoomsQuery } = authApi;

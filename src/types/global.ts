@@ -16,3 +16,12 @@ export type TRoom = {
   images: string[];
   amenities: string[]; // List of amenities like 'Projector', 'Whiteboard', etc.
 };
+
+export type TGetRoomsParams = {
+  searchTerm?: string;
+  minCapacity?: number;
+  maxCapacity?: number;
+  minPrice?: number;
+  maxPrice?: number;
+  sort?: "priceAsc" | "priceDesc";
+};

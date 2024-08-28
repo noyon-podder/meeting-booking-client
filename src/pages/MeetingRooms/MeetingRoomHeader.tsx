@@ -1,7 +1,12 @@
 import Container from "@/components/Container";
 import { IoSearch } from "../../icons/ReactIcons";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { setSearchTerm } from "@/redux/features/rooms/roomSlice";
 
 const MeetingRoomHeader = () => {
+  const searchTerm = useAppSelector((state) => state.room.searchTerm);
+
+  const dispatch = useAppDispatch();
   return (
     <div className="py-4 border-b">
       <Container>
@@ -20,6 +25,8 @@ const MeetingRoomHeader = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
+                value={searchTerm}
+                onChange={(e) => dispatch(setSearchTerm(e.target.value))}
                 className="w-full  h-[50px] bg-color-lightColor dark:bg-color-darkBaseColor dark:border-color-baseColor  px-4 py-2 rounded-l-md focus:outline-none border border-gray-300 "
                 required
               />

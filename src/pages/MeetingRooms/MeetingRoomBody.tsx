@@ -1,64 +1,25 @@
 import Container from "@/components/Container";
 import ProductLoadingSkeleton from "@/components/ProductLoadingSkeleton";
 import RoomCard from "@/components/RoomCard";
-import { useGetAllProductQuery } from "@/redux/features/rooms/roomApi";
+import { useGetAllRoomsQuery } from "@/redux/features/rooms/roomApi";
+import { useAppSelector } from "@/redux/hook";
 import { TRoom } from "@/types";
+import { useDebounce } from "use-debounce";
 
 const MeetingRoomBody = () => {
-  //   const roomData = [
-  //     {
-  //       id: "1",
-  //       name: "Huddle Room",
-  //       description:
-  //         "A small, informal room for quick team meetings or brainstorming sessions.",
-  //       capacity: 6,
-  //       pricePerSlot: 30,
+  const searchTerm = useAppSelector((state) => state.room.searchTerm);
 
-  //       imageUrl:
-  //         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO_b-YTwImwx9xjkL6YE5MMK1rxqNgkC1_7Q&s",
-  //       amenities: ["Whiteboard", "TV Screen"],
-  //     },
-  //     {
-  //       id: "2",
-  //       name: "Huddle Room",
-  //       description:
-  //         "A small, informal room for quick team meetings or brainstorming sessions.",
-  //       capacity: 6,
-  //       pricePerSlot: 30,
+  const [debounceValue] = useDebounce(searchTerm, 1000);
 
-  //       imageUrl:
-  //         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO_b-YTwImwx9xjkL6YE5MMK1rxqNgkC1_7Q&s",
-  //       amenities: ["Whiteboard", "TV Screen"],
-  //     },
-  //     {
-  //       id: "3",
-  //       name: "Huddle Room",
-  //       description:
-  //         "A small, informal room for quick team meetings or brainstorming sessions.",
-  //       capacity: 6,
-  //       pricePerSlot: 30,
-
-  //       imageUrl:
-  //         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO_b-YTwImwx9xjkL6YE5MMK1rxqNgkC1_7Q&s",
-  //       amenities: ["Whiteboard", "TV Screen"],
-  //     },
-  //     {
-  //       id: "4",
-  //       name: "Huddle Room",
-  //       description:
-  //         "A small, informal room for quick team meetings or brainstorming sessions.",
-  //       capacity: 6,
-  //       pricePerSlot: 30,
-
-  //       imageUrl:
-  //         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO_b-YTwImwx9xjkL6YE5MMK1rxqNgkC1_7Q&s",
-  //       amenities: ["Whiteboard", "TV Screen"],
-  //     },
-  //   ];
-
-  const { data: roomData, isLoading } = useGetAllProductQuery(undefined);
-
-  console.log(roomData);
+  const { data: roomData, isFetching } = useGetAllRoomsQuery({
+    searchTerm: debounceValue,
+    // minCapacity: 10,
+    // maxCapacity: 50,
+    // minPrice: 100,
+    // maxPrice: 500,
+    // sort: "priceAsc",
+  });
+  console.log(searchTerm, isFetching);
 
   return (
     <div className="">
@@ -89,12 +50,21 @@ const MeetingRoomBody = () => {
             </div>
           </div>
           <div className="w-full">
-            {isLoading ? <ProductLoadingSkeleton /> : null}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-              {roomData?.data?.map((room: TRoom) => (
-                <RoomCard key={room.id} room={room} />
-              ))}
-            </div>
+            {roomData?.data?.length <= 0 && (
+              <h2 className="dark:text-white text-color-heading text-2xl text-center py-5">
+                No Data Found
+              </h2>
+            )}
+            {/* {isLoading ? <ProductLoadingSkeleton /> : null} */}
+            {isFetching ? (
+              <ProductLoadingSkeleton />
+            ) : (
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                {roomData?.data?.map((room: TRoom) => (
+                  <RoomCard key={room._id} room={room} />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </Container>
