@@ -5,6 +5,7 @@ import ContactPage from "@/pages/Contact/ContactPage";
 import Dashboard from "@/pages/Dashboard/Dashboard";
 import HomePage from "@/pages/Home/HomePage";
 import Login from "@/pages/Login/Login";
+import MeetingRoomDetails from "@/pages/MeetingRoomDetails/MeetingRoomDetails";
 import MeetingRoomsPage from "@/pages/MeetingRooms/MeetingRoomsPage";
 import MyBookings from "@/pages/MyBookins/MyBookings";
 import NotFound from "@/pages/NotFound/NotFound";
@@ -43,6 +44,14 @@ export const router = createBrowserRouter([
       {
         path: "/meeting-rooms",
         element: <MeetingRoomsPage />,
+      },
+      {
+        path: "/meeting-rooms/:id",
+        element: (
+          <ProtectedRoute>
+            <MeetingRoomDetails />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/my-bookings",

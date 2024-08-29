@@ -21,7 +21,7 @@ const Login = () => {
 
   const defaultValues = {
     email: "web.programming12.6@gmail.com",
-    password: "123456",
+    password: "12345678",
   };
 
   const handleLoginForm: SubmitHandler<FieldValues> = async (data) => {

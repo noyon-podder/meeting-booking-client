@@ -43,7 +43,12 @@ const MeetingRoomBody = () => {
 
   dispatch(setLength(roomData?.data?.length));
 
-  if (error) return <div>Error loading rooms</div>;
+  if (error)
+    return (
+      <div className="h-screen w-full flex items-center justify-center">
+        <h2 className="text-2xl text-red-600">!Error to loading rooms</h2>
+      </div>
+    );
 
   return (
     <div className="">

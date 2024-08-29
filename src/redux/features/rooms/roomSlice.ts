@@ -14,7 +14,7 @@ const initialState: TRoomSliceState = {
   sort: "",
   capacity: 0,
   minPrice: 10,
-  maxPrice: 1000,
+  maxPrice: 100000,
   length: "",
 };
 

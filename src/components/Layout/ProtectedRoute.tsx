@@ -8,14 +8,14 @@ import { toast } from "sonner";
 import { JwtPayload } from "jsonwebtoken";
 
 interface CustomJwtPayload extends JwtPayload {
-  role: "user" | "admin";
+  role?: "user" | "admin";
 }
 const ProtectedRoute = ({
   children,
   role,
 }: {
   children: ReactNode;
-  role: "user" | "admin";
+  role?: "user" | "admin";
 }) => {
   const token = useAppSelector(currentToken);
 
@@ -32,10 +32,12 @@ const ProtectedRoute = ({
     return <Navigate to="/login" replace={true} />;
   }
 
-  if (role !== user?.role) {
-    toast("you are not allowed to access this route");
-    console.log("user");
-    return <Navigate to="/" replace={true} />;
+  if (role) {
+    if (role !== user?.role) {
+      toast("you are not allowed to access this route");
+      console.log("user");
+      return <Navigate to="/" replace={true} />;
+    }
   }
 
   return children;

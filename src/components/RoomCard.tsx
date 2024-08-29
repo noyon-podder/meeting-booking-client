@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useScrollAnimation from "@/hooks/useScrollAnimation";
 import { motion } from "framer-motion";
 import { fadeVariants } from "@/utils/variants";
+import { IoIosPricetags, MdPeople } from "../icons/ReactIcons";
 
 type RoomCardProps = {
   room: TRoom;
@@ -27,22 +28,18 @@ const RoomCard = ({ room }: RoomCardProps) => {
         className="w-full h-48 object-cover"
       />
       <div className="p-4">
-        <h3 className="text-lg font-semibold dark:text-color-darkHeading text-color-heading">
+        <h3 className="text-lg font-semibold dark:text-color-darkHeading text-color-darkBaseColor">
           {room.name}
         </h3>
 
         <div className="flex items-center justify-between my-2">
           <div>
-            <p className="text-gray-500 dark:text-color-darkHeading text-normal mb-1">
-              <span className="text-gray-700 dark:text-color-darkHeading mr-1 font-medium">
-                Capacity:
-              </span>{" "}
-              {room.capacity}
+            <p className="flex items-center gap-3 text-gray-500 dark:text-color-darkHeading text-normal mb-3">
+              <MdPeople className="text-gray-700 dark:text-color-darkHeading text-2xl" />
+              {room.capacity} persons
             </p>
-            <p className="text-gray-500 text-normal dark:text-color-darkHeading">
-              <span className="text-gray-700 dark:text-color-darkHeading mr-1 font-medium">
-                Price:
-              </span>{" "}
+            <p className="flex items-center gap-3 text-gray-500 text-normal dark:text-color-darkHeading">
+              <IoIosPricetags className="text-gray-700 dark:text-color-darkHeading text-2xl" />
               ${room.pricePerSlot} per slot
             </p>
           </div>

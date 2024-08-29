@@ -5,6 +5,7 @@ import {
   FaCalendarCheck,
   FaLock,
   FaThumbsUp,
+  FaHeart,
 } from "react-icons/fa";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 import {
@@ -13,10 +14,13 @@ import {
   FaXTwitter,
   FaClock,
   FaHeadset,
+  FaRegHeart,
 } from "react-icons/fa6";
-import { IoSearch } from "react-icons/io5";
+import { IoSearch, IoShareSocial } from "react-icons/io5";
 import { BsQuote } from "react-icons/bs";
-import { IoMdQuote } from "react-icons/io";
+import { IoMdQuote, IoIosPricetags } from "react-icons/io";
+import { MdReduceCapacity, MdPeople } from "react-icons/md";
+import { BsBuilding } from "react-icons/bs";
 
 export {
   FaFacebookF,
@@ -34,4 +38,11 @@ export {
   BsQuote,
   IoMdQuote,
   IoSearch,
+  FaHeart,
+  FaRegHeart,
+  IoShareSocial,
+  IoIosPricetags,
+  MdReduceCapacity,
+  BsBuilding,
+  MdPeople,
 };
