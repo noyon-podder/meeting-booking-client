@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./features/auth/authSlice";
 import roomReducer from "./features/rooms/roomSlice";
+import bookingReducer from "./features/booking/bookingSlice";
 import { baseApi } from "./api/baseApi";
 import {
   persistReducer,
@@ -25,6 +26,7 @@ export const store = configureStore({
     [baseApi.reducerPath]: baseApi.reducer,
     auth: persistedAuthReducer,
     room: roomReducer,
+    booking: bookingReducer,
   },
 
   // ?previous use

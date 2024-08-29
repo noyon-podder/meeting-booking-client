@@ -40,6 +40,7 @@ const Login = () => {
       const currentUser = {
         user: user,
         token: res.data?.token,
+        userInfo: res?.data?.data,
       };
 
       dispatch(setUser(currentUser));

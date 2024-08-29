@@ -1,7 +1,7 @@
 import { baseApi } from "@/redux/api/baseApi";
 // import { TGetRoomsParams, TRoom } from "@/types";
 
-const authApi = baseApi.injectEndpoints({
+const roomAPi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllRooms: builder.query({
       query: (params) => {
@@ -40,4 +40,4 @@ const authApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetAllRoomsQuery, useGetSingleRoomQuery } = authApi;
+export const { useGetAllRoomsQuery, useGetSingleRoomQuery } = roomAPi;

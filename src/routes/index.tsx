@@ -1,6 +1,7 @@
 import MainLayout from "@/components/Layout/MainLayout";
 import ProtectedRoute from "@/components/Layout/ProtectedRoute";
 import AboutPage from "@/pages/About/AboutPage";
+import BookingForm from "@/pages/Booking/BookingForm";
 import ContactPage from "@/pages/Contact/ContactPage";
 import Dashboard from "@/pages/Dashboard/Dashboard";
 import HomePage from "@/pages/Home/HomePage";
@@ -50,6 +51,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <MeetingRoomDetails />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/meeting-rooms/:id/booking-slots",
+        element: (
+          <ProtectedRoute>
+            <BookingForm />
           </ProtectedRoute>
         ),
       },
