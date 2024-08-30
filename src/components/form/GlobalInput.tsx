@@ -25,7 +25,6 @@ const GlobalInput = ({
   } = useFormContext();
 
   const isError = !!errors[name];
-  console.log(errors[name]);
   return (
     <div className="mb-5  ">
       {label ? (

@@ -3,35 +3,49 @@ import GlobalForm from "@/components/form/GlobalForm";
 import GlobalInput from "@/components/form/GlobalInput";
 import { SelectData } from "@/components/SelectData";
 import { currentUserInfo } from "@/redux/features/auth/authSlice";
-import { useAppSelector } from "@/redux/hook";
-import { useState } from "react";
-import { FieldValues, SubmitHandler } from "react-hook-form";
-import MultiSelect from "./MultiSelect";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { FieldValues } from "react-hook-form";
+import MultiSelect from "./MultiSelect";
 import moment from "moment";
 import { useGetSlotAvailabilityQuery } from "@/redux/features/booking/bookingApi";
 import { useParams } from "react-router-dom";
+import { MultiValue } from "react-select";
+import { OptionType } from "@/types";
+import { setBookingInfo } from "@/redux/features/booking/bookingSlice";
 
 const BookingForm = () => {
   const params = useParams();
-  console.log(params.id);
   const [date, setDate] = useState<Date>();
   const userInfo = useAppSelector(currentUserInfo);
-  //   const slots = useAppSelector((state) => state.booking.slotValue);
   const formatDate = moment(date).format("YYYY-MM-DD");
+  const [selectedOption, setSelectedOption] =
+    useState<MultiValue<OptionType> | null>(null);
+  const dispatch = useAppDispatch();
 
   const { data: availabilitySlots } = useGetSlotAvailabilityQuery({
     date: formatDate,
     roomId: params.id,
   });
 
-  const handleBookingFormSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log({ data, formatDate });
-    const bookingInfo = {};
+  console.log({ selectedOption });
+
+  const handleBookingFormSubmit = (data: FieldValues) => {
+    const bookingInfo = {
+      roomId: params.id || "",
+      name: data.userName,
+      email: data.userEmail,
+      phoneNumber: data.userPhoneNumber,
+      date: formatDate,
+      userId: userInfo?._id || "",
+      slots: selectedOption?.map((option) => option.value) || [], // Ensure slots is an array of strings
+    };
+
+    dispatch(setBookingInfo(bookingInfo));
 
     console.log({ bookingInfo });
   };
-
   return (
     <div className="lg:py-20 py-10">
       <Container>
@@ -67,7 +81,11 @@ const BookingForm = () => {
             <div className="mt-4">
               <h2 className="font-semibold mb-2 ">Select Slots</h2>
 
-              <MultiSelect availabilitySlots={availabilitySlots} />
+              <MultiSelect
+                availabilitySlots={availabilitySlots}
+                selectedOption={selectedOption}
+                setSelectedOption={setSelectedOption}
+              />
             </div>
 
             <Button className="mt-5">Submit</Button>

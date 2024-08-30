@@ -25,3 +25,8 @@ export type TGetRoomsParams = {
   maxPrice?: number;
   sort?: "priceAsc" | "priceDesc";
 };
+
+export type OptionType = {
+  value: string;
+  label: string;
+};

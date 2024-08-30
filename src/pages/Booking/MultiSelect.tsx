@@ -1,30 +1,24 @@
-import { setSlotValue } from "@/redux/features/booking/bookingSlice";
-import { useAppDispatch } from "@/redux/hook";
-import React, { useState } from "react";
+import { OptionType } from "@/types";
+import React from "react";
 import Select, { MultiValue, StylesConfig } from "react-select";
 
-type OptionType = {
-  value: string;
-  label: string;
-};
-
-interface AvailabilitySlot {
+type TAvailabilitySlot = {
   _id: string;
   startTime: string;
   endTime: string;
-}
+};
 
-interface MultiSelectProps {
-  availabilitySlots: AvailabilitySlot[]; // Pass the availability slots as a prop
-}
+type TMultiSelectProps = {
+  availabilitySlots: TAvailabilitySlot[];
+  selectedOption?: MultiValue<OptionType> | null;
+  setSelectedOption: (option: MultiValue<OptionType> | null) => void;
+};
 
-const MultiSelect: React.FC<MultiSelectProps> = ({ availabilitySlots }) => {
-  const dispatch = useAppDispatch();
-  const [selectedOption, setSelectedOption] =
-    useState<MultiValue<OptionType> | null>(null);
-
-  selectedOption?.filter((i) => dispatch(setSlotValue(i.value)));
-
+const MultiSelect: React.FC<TMultiSelectProps> = ({
+  availabilitySlots,
+  selectedOption,
+  setSelectedOption,
+}) => {
   const isDarkMode = document.documentElement.classList.contains("dark");
 
   const customStyles: StylesConfig<OptionType, true> = {
@@ -76,10 +70,12 @@ const MultiSelect: React.FC<MultiSelectProps> = ({ availabilitySlots }) => {
   };
 
   // Map availabilitySlots to react-select options
-  const options: OptionType[] = availabilitySlots?.data?.map((slot) => ({
-    value: slot._id,
-    label: `${slot.startTime} - ${slot.endTime}`,
-  }));
+  const options: OptionType[] = availabilitySlots?.data?.map(
+    (slot: TAvailabilitySlot) => ({
+      value: slot._id,
+      label: `${slot.startTime} - ${slot.endTime}`,
+    })
+  );
 
   return (
     <div className="App">
