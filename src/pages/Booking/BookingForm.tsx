@@ -10,7 +10,7 @@ import { FieldValues } from "react-hook-form";
 import MultiSelect from "./MultiSelect";
 import moment from "moment";
 import { useGetSlotAvailabilityQuery } from "@/redux/features/booking/bookingApi";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { MultiValue } from "react-select";
 import { OptionType } from "@/types";
 import { setBookingInfo } from "@/redux/features/booking/bookingSlice";
@@ -21,8 +21,9 @@ const BookingForm = () => {
   const userInfo = useAppSelector(currentUserInfo);
   const formatDate = moment(date).format("YYYY-MM-DD");
   const [selectedOption, setSelectedOption] =
-    useState<MultiValue<OptionType> | null>(null);
+    useState<MultiValue<OptionType> | null>([]);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const { data: availabilitySlots } = useGetSlotAvailabilityQuery({
     date: formatDate,
@@ -43,6 +44,8 @@ const BookingForm = () => {
     };
 
     dispatch(setBookingInfo(bookingInfo));
+
+    navigate(`/meeting-rooms/${params.id}/checkout`);
 
     console.log({ bookingInfo });
   };
@@ -88,7 +91,13 @@ const BookingForm = () => {
               />
             </div>
 
-            <Button className="mt-5">Submit</Button>
+            <Button
+              type="submit"
+              disabled={selectedOption?.length === 0}
+              className="mt-5"
+            >
+              Submit
+            </Button>
           </GlobalForm>
         </div>
       </Container>

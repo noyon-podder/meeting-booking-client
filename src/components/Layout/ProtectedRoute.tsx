@@ -3,13 +3,14 @@ import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { verifyToken } from "@/utils/verifyToken";
 import { ReactNode } from "react";
 // import toast from "react-hot-toast";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { toast } from "sonner";
 import { JwtPayload } from "jsonwebtoken";
 
 interface CustomJwtPayload extends JwtPayload {
   role?: "user" | "admin";
 }
+
 const ProtectedRoute = ({
   children,
   role,
@@ -18,6 +19,7 @@ const ProtectedRoute = ({
   role?: "user" | "admin";
 }) => {
   const token = useAppSelector(currentToken);
+  const location = useLocation();
 
   let user: CustomJwtPayload | null = null;
 
@@ -29,7 +31,8 @@ const ProtectedRoute = ({
   const dispatch = useAppDispatch();
   if (!token) {
     dispatch(logout());
-    return <Navigate to="/login" replace={true} />;
+    // return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
+    return <Navigate to="/login" state={{ from: location }} replace={true} />;
   }
 
   if (role) {

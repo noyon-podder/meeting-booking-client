@@ -4,7 +4,7 @@ import Navbar from "@/components/Shared/Navbar";
 import { Button } from "@/components/ui/button";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import backgroundImage from "/register.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import loginValidationSchema from "@/schema/loginValidationSchema";
 import { Loader2 } from "lucide-react";
@@ -18,6 +18,8 @@ const Login = () => {
   const [userLogin, { isLoading }] = useLoginMutation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const location = useLocation();
+  const form = location?.state?.from?.pathname || "/";
 
   const defaultValues = {
     email: "web.programming12.6@gmail.com",
@@ -51,7 +53,7 @@ const Login = () => {
         toast.error(res.error.data.message);
       } else {
         toast.success("Login Successfully ☺");
-        navigate("/");
+        navigate(form, { replace: true });
       }
       console.log(res);
     } catch (err) {
