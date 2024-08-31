@@ -1,15 +1,16 @@
 import Container from "@/components/Container";
 import { currentUserInfo } from "@/redux/features/auth/authSlice";
-
 import { useAppSelector } from "@/redux/hook";
 import { useState } from "react";
 import CheckoutStep from "./CheckoutStep";
 import UserInfoForm from "./UserInfoForm";
-import { Badge } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useGetSingleRoomQuery } from "@/redux/features/rooms/roomApi";
 import Loading from "@/components/Loading";
 import { useParams } from "react-router-dom";
+import { Badge } from "@/components/ui/badge";
+import AmarPay from "/amarPay.png";
+import COD from "/cod.png";
 
 const CheckoutPage = () => {
   const params = useParams();
@@ -25,11 +26,18 @@ const CheckoutPage = () => {
 
   if (isLoading) return <Loading />;
 
-  // Ensure the images array is available and has the expected length
+  // image length
   const images = roomInfo?.data?.images || [];
 
-  console.log(roomInfo?.data);
-
+  const handleAllBookingInformation = () => {
+    const bookingPaymentData = {
+      user: bookingInfo?.userId,
+      roomId: bookingInfo?.roomId,
+      slots: bookingInfo?.slotValue,
+      date: bookingInfo?.date,
+    };
+    console.log("booking info", bookingPaymentData);
+  };
   return (
     <div className="py-10">
       <Container>
@@ -157,11 +165,8 @@ const CheckoutPage = () => {
                 </div>
 
                 <div className="mt-5">
-                  {bookingInfo?.slotLabel?.map((item, index) => (
-                    <Badge
-                      key={index}
-                      className="mr-2 bg-color-baseColor hover:bg-color-bgLightColor text-white"
-                    >
+                  {bookingInfo?.slotLabel?.map((item) => (
+                    <Badge className="bg-color-baseColor text-white hover:bg-color-baseLightColor mr-3">
                       {item}
                     </Badge>
                   ))}
@@ -180,7 +185,76 @@ const CheckoutPage = () => {
               </div>
             </div>
           )}
-          {step === 3 && <div>Payment</div>}
+          {step === 3 && (
+            <div className="max-w-3xl p-5 my-14 border mx-auto bg-color-lightColor dark:bg-color-cardColor rounded-md">
+              <h2 className="text-2xl font-semibold ">Select Payment Method</h2>
+
+              <div className=" mt-7">
+                {/* {selectPaymentMethod.map((method) => (
+                  <div
+                    key={method.id}
+                    className={`flex items-center gap-3 border py-3 px-3 rounded-lg  cursor-pointer ${
+                      method.value === paymentMethod
+                        ? "border-color-baseColor"
+                        : "border-transparent"
+                    }`}
+                    onClick={() => setPaymentMethod(method.value)}
+                  >
+                    <img
+                      src={method.image}
+                      alt={method.value}
+                      width={60}
+                      className="shadow-md"
+                    />
+                    <h2 className="text-gray-500 dark:text-gray-300 text-base font-medium">
+                      {method.name}
+                    </h2>
+                  </div>
+                ))} */}
+                <div
+                  className={`flex items-center gap-3 border py-3 px-3 rounded-lg  cursor-pointer
+                    
+                      border-color-baseColor
+                    
+                  `}
+                  // onClick={() => setPaymentMethod(method.value)}
+                >
+                  <img
+                    src={AmarPay}
+                    alt={"amar pay"}
+                    width={60}
+                    className="shadow-md"
+                  />
+                  <h2 className="text-gray-500 dark:text-gray-300 text-base font-medium">
+                    Amar Pay
+                  </h2>
+                </div>
+                <div
+                  className={`flex items-center gap-3 border py-3 px-3 rounded-lg  cursor-default mt-2
+                      border-transparent
+                  `}
+                  // onClick={() => setPaymentMethod(method.value)}
+                >
+                  <img src={COD} alt={"COD"} width={60} className="shadow-md" />
+                  <h2 className="text-gray-500 dark:text-gray-300 text-base font-medium">
+                    Cash On Delivery{" "}
+                    <Badge className="ml-2" variant={"secondary"}>
+                      beta
+                    </Badge>
+                  </h2>
+                </div>
+              </div>
+
+              <div className="mt-10">
+                <Button
+                  onClick={handleAllBookingInformation}
+                  className="bg-color-baseColor tex-white hover:bg-color-baseLightColor text-white"
+                >
+                  Payment
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </Container>
     </div>

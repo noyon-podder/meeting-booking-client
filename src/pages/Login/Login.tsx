@@ -55,7 +55,7 @@ const Login = () => {
     };
 
     try {
-      const res = await userLogin(userData);
+      const res: any = await userLogin(userData);
 
       const user = verifyToken(res?.data.token);
 

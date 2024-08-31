@@ -95,7 +95,7 @@ const BookingForm = () => {
             <Button
               type="submit"
               disabled={selectedOption?.length === 0}
-              className="mt-5"
+              className="mt-5 bg-color-baseColor tex-white hover:bg-color-baseLightColor text-white"
             >
               Submit
             </Button>

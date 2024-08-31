@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import GlobalForm from "@/components/form/GlobalForm";
 import GlobalInput from "@/components/form/GlobalInput";
 import Navbar from "@/components/Shared/Navbar";
@@ -22,7 +23,7 @@ const Register = () => {
     };
 
     try {
-      const res = await createUser(userData);
+      const res: any = await createUser(userData);
 
       console.log(res);
 

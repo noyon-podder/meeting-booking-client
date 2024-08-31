@@ -9,7 +9,7 @@ type TAvailabilitySlot = {
 };
 
 type TMultiSelectProps = {
-  availabilitySlots: TAvailabilitySlot[];
+  availabilitySlots: TAvailabilitySlot[] | any;
   selectedOption?: MultiValue<OptionType> | null;
   setSelectedOption: (option: MultiValue<OptionType> | null) => void;
 };
