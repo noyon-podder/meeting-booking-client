@@ -13,6 +13,26 @@ import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { useAppDispatch } from "@/redux/hook";
 import { setUser } from "@/redux/features/auth/authSlice";
 import { verifyToken } from "@/utils/verifyToken";
+// import { TResponseRedux } from "@/types";
+
+// type TLoginResponse = {
+//   data: {
+//     _id: string;
+//     name: string;
+//     email: string;
+//     phone: string;
+//     address: string;
+//     role: string;
+//     createdAt: string;
+//     updatedAt: string;
+//     __v: number;
+//   };
+//   token: string;
+// };
+// type LoginFormValues = {
+//   email: string;
+//   password: string;
+// };
 
 const Login = () => {
   const [userLogin, { isLoading }] = useLoginMutation();
@@ -37,7 +57,7 @@ const Login = () => {
     try {
       const res = await userLogin(userData);
 
-      const user = verifyToken(res.data.token);
+      const user = verifyToken(res?.data.token);
 
       const currentUser = {
         user: user,

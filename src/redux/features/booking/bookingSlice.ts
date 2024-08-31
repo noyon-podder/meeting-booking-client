@@ -7,7 +7,8 @@ interface SetBookingInfoPayload {
   name: string;
   phoneNumber: string;
   email: string;
-  slots: string[]; // Should be string[] instead of []
+  slots: string[];
+  slotLabel: string[];
 }
 
 type TBookingSliceState = {
@@ -18,6 +19,7 @@ type TBookingSliceState = {
   email: string;
   date: string;
   slotValue: string[];
+  slotLabel: string[];
 };
 
 const initialState: TBookingSliceState = {
@@ -28,6 +30,7 @@ const initialState: TBookingSliceState = {
   email: "",
   date: "",
   slotValue: [],
+  slotLabel: [],
 };
 
 const bookingSlice = createSlice({
@@ -42,6 +45,7 @@ const bookingSlice = createSlice({
       state.phoneNumber = action.payload.phoneNumber;
       state.email = action.payload.email;
       state.slotValue = action.payload.slots;
+      state.slotLabel = action.payload.slotLabel;
     },
   },
 });

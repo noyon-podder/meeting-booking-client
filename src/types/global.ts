@@ -7,6 +7,15 @@ export type TUser = {
   role: "user" | "admin";
 };
 
+export type TUserInfo = {
+  _id: string;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  role: string;
+};
+
 export type TRoom = {
   _id: string;
   name: string;

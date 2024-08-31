@@ -1,4 +1,5 @@
 import { RootState } from "@/redux/store";
+import { TUserInfo } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 
 type TUser = {
@@ -7,15 +8,6 @@ type TUser = {
   role: string;
   iat: number;
   exp: number;
-};
-
-type TUserInfo = {
-  _id: string;
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  role: string;
 };
 
 type TAuthState = {

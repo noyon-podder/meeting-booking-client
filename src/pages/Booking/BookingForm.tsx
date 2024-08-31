@@ -40,7 +40,8 @@ const BookingForm = () => {
       phoneNumber: data.userPhoneNumber,
       date: formatDate,
       userId: userInfo?._id || "",
-      slots: selectedOption?.map((option) => option.value) || [], // Ensure slots is an array of strings
+      slots: selectedOption?.map((option) => option.value) || [],
+      slotLabel: selectedOption?.map((option) => option.label) || [],
     };
 
     dispatch(setBookingInfo(bookingInfo));
