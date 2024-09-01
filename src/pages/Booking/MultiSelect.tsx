@@ -9,9 +9,9 @@ type TAvailabilitySlot = {
 };
 
 type TMultiSelectProps = {
-  availabilitySlots: TAvailabilitySlot[] | any;
+  availabilitySlots?: TAvailabilitySlot[] | any;
   selectedOption?: MultiValue<OptionType> | null;
-  setSelectedOption: (option: MultiValue<OptionType> | null) => void;
+  setSelectedOption?: (option: MultiValue<OptionType> | null) => void;
 };
 
 const MultiSelect: React.FC<TMultiSelectProps> = ({

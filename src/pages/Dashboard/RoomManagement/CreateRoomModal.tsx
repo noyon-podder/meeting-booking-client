@@ -10,13 +10,24 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useRoomCreateMutation } from "@/redux/features/rooms/roomApi";
+import { Loader2 } from "lucide-react";
 import { useState } from "react";
-
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
+import Select from "react-select";
+
+const options = [
+  { value: "tv", label: "TV" },
+  { value: "moboile", label: "Mobile" },
+  { value: "wifi", label: "Wifi" },
+];
 
 const CreateRoomModal = () => {
   const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const [roomCreate, { isLoading }] = useRoomCreateMutation();
+  const [selectedAminties, setSelectedAminties] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleRoomCreate: SubmitHandler<FieldValues> = async (data) => {
     console.log({ imageUrls });
@@ -29,28 +40,32 @@ const CreateRoomModal = () => {
       capacity: Number(data?.capacity),
       pricePerSlot: Number(data?.pricePerSlot),
       images: imageUrls,
+      amenities: selectedAminties.map((amenity) => amenity.value),
     };
 
     console.log(createNewRoomData);
 
-    // try {
-    //   const res: any = await roomUpdate(updateDataInfo);
+    try {
+      const res: any = await roomCreate(createNewRoomData);
 
-    //   console.log(res);
+      console.log(res);
 
-    //   if (res.error) {
-    //     toast.error(res.error.data.message);
-    //   } else {
-    //     toast.success("Room Update Successfully");
-    //   }
-    //   console.log(res);
-    // } catch (err) {
-    //   toast.error("Something went wrong");
-    //   console.log(err);
-    // }
+      if (res.error) {
+        toast.error(res.error.data.message);
+      } else {
+        toast.success("Room Create Successfully");
+        setIsOpen(false);
+        setImageUrls([]);
+        setSelectedAminties([]);
+      }
+      console.log(res);
+    } catch (err) {
+      toast.error("Something went wrong");
+      console.log(err);
+    }
   };
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button className="bg-color-baseColor text-white hover:bg-color-baseLightColor">
           Create Room
@@ -75,13 +90,36 @@ const CreateRoomModal = () => {
               imageUrls={imageUrls}
               setImageUrls={setImageUrls}
             />
-            <Button
-              type="submit"
-              className="mt-5 bg-color-baseColor hover:bg-color-baseLightColor text-white"
-              disabled={imageUrls.length < 3}
-            >
-              Create Room
-            </Button>
+
+            {/* multi select */}
+            <Select
+              isMulti
+              defaultValue={selectedAminties}
+              onChange={setSelectedAminties}
+              options={options}
+            />
+
+            {isLoading ? (
+              <>
+                <Button
+                  disabled
+                  className="w-full bg-color-baseColor text-white"
+                >
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Please wait
+                </Button>
+              </>
+            ) : (
+              <>
+                {" "}
+                <Button
+                  type="submit"
+                  className="w-full bg-color-baseColor text-white hover:bg-color-baseLightColor"
+                >
+                  Submit
+                </Button>
+              </>
+            )}
           </GlobalForm>
         </div>
       </DialogContent>

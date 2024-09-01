@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { baseApi } from "@/redux/api/baseApi";
 // import { TGetRoomsParams, TRoom } from "@/types";
 
@@ -71,6 +72,15 @@ const roomAPi = baseApi.injectEndpoints({
       },
     }),
 
+    roomCreate: builder.mutation({
+      query: (roomData) => ({
+        url: "/rooms",
+        method: "POST",
+        body: roomData,
+      }),
+      invalidatesTags: ["Rooms"],
+    }),
+
     roomDelete: builder.mutation({
       query: (roomId) => ({
         url: `/rooms/${roomId}`,
@@ -96,4 +106,5 @@ export const {
   useGetRoomsQuery,
   useRoomDeleteMutation,
   useUpdateRoomMutation,
+  useRoomCreateMutation,
 } = roomAPi;
