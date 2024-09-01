@@ -6,7 +6,7 @@ import Container from "../Container";
 
 import { useAppSelector } from "@/redux/hook";
 import { currentUser } from "@/redux/features/auth/authSlice";
-import Avatar from "./ProfileAvatar";
+import ProfileAvatar from "./ProfileAvatar";
 
 const Navbar = () => {
   const user = useAppSelector(currentUser);
@@ -35,7 +35,7 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Avatar />
+                <ProfileAvatar />
               </>
             )}
 

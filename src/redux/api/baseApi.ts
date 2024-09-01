@@ -6,6 +6,7 @@ export const baseApi = createApi({
   baseQuery: fetchBaseQuery({
     // baseUrl: "https://meeting-booking-server.vercel.app/api",
     baseUrl: "http://localhost:5000/api",
+
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token; // Assuming you store the token in auth slice
 
@@ -17,6 +18,7 @@ export const baseApi = createApi({
     },
   }),
   endpoints: () => ({}),
+  tagTypes: ["Rooms"],
 });
 
 export default baseApi;

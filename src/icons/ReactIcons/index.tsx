@@ -16,7 +16,7 @@ import {
   FaHeadset,
   FaRegHeart,
 } from "react-icons/fa6";
-import { IoSearch, IoShareSocial } from "react-icons/io5";
+import { IoSearch, IoShareSocial, IoTrashOutline } from "react-icons/io5";
 import { BsQuote } from "react-icons/bs";
 import { IoMdQuote, IoIosPricetags } from "react-icons/io";
 import { MdReduceCapacity, MdPeople } from "react-icons/md";
@@ -45,4 +45,5 @@ export {
   MdReduceCapacity,
   BsBuilding,
   MdPeople,
+  IoTrashOutline,
 };

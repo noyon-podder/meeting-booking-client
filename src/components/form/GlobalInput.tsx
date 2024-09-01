@@ -10,6 +10,7 @@ type TGlobalInputProps = {
   className?: string;
   label?: string;
   value?: string;
+  defaultValue?: string;
 };
 const GlobalInput = ({
   name,
@@ -18,6 +19,7 @@ const GlobalInput = ({
   className,
   label,
   value,
+  defaultValue,
 }: TGlobalInputProps) => {
   const {
     register,
@@ -36,6 +38,7 @@ const GlobalInput = ({
         type={type}
         placeholder={placeholder}
         value={value}
+        defaultValue={defaultValue}
         id={name}
         {...register(name)}
         className={cn(

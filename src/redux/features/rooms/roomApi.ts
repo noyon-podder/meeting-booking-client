@@ -1,6 +1,11 @@
 import { baseApi } from "@/redux/api/baseApi";
 // import { TGetRoomsParams, TRoom } from "@/types";
 
+interface GetRoomsQueryParams {
+  searchTerm?: string;
+  filter?: string;
+  sort?: string;
+}
 const roomAPi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllRooms: builder.query({
@@ -23,9 +28,37 @@ const roomAPi = baseApi.injectEndpoints({
 
         console.log(`rooms?${urlParams.toString()}`);
 
-        console.log({ urlParams });
-        return `rooms?${urlParams.toString()}`;
+        if (params) {
+          console.log({ urlParams });
+          return `rooms?${urlParams.toString()}`;
+        } else {
+          return "/rooms";
+        }
       },
+    }),
+
+    getRooms: builder.query<any, GetRoomsQueryParams>({
+      query: ({ searchTerm, filter, sort } = {}) => {
+        const queryParams: string[] = [];
+
+        if (searchTerm) {
+          queryParams.push(`searchTerm=${searchTerm}`);
+        }
+
+        if (filter) {
+          queryParams.push(`filter=${filter}`);
+        }
+
+        if (sort) {
+          queryParams.push(`sort=${sort}`);
+        }
+
+        const queryString =
+          queryParams.length > 0 ? `?${queryParams.join("&")}` : "";
+
+        return `rooms${queryString}`;
+      },
+      providesTags: ["Rooms"],
     }),
 
     getSingleRoom: builder.query({
@@ -37,7 +70,30 @@ const roomAPi = baseApi.injectEndpoints({
         };
       },
     }),
+
+    roomDelete: builder.mutation({
+      query: (roomId) => ({
+        url: `/rooms/${roomId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Rooms"],
+    }),
+
+    updateRoom: builder.mutation({
+      query: ({ roomId, roomUpdateData }) => ({
+        url: `/rooms/${roomId}`,
+        method: "PUT",
+        body: roomUpdateData,
+      }),
+      invalidatesTags: ["Rooms"],
+    }),
   }),
 });
 
-export const { useGetAllRoomsQuery, useGetSingleRoomQuery } = roomAPi;
+export const {
+  useGetAllRoomsQuery,
+  useGetSingleRoomQuery,
+  useGetRoomsQuery,
+  useRoomDeleteMutation,
+  useUpdateRoomMutation,
+} = roomAPi;

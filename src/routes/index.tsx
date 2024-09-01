@@ -1,10 +1,14 @@
+import DashboardLayout from "@/components/Layout/DashboardLayout";
 import MainLayout from "@/components/Layout/MainLayout";
 import ProtectedRoute from "@/components/Layout/ProtectedRoute";
 import AboutPage from "@/pages/About/AboutPage";
 import BookingForm from "@/pages/Booking/BookingForm";
 import CheckoutPage from "@/pages/Checkout/CheckoutPage";
 import ContactPage from "@/pages/Contact/ContactPage";
+import BookingManagement from "@/pages/Dashboard/BookingManagement";
 import Dashboard from "@/pages/Dashboard/Dashboard";
+import RoomManagement from "@/pages/Dashboard/RoomManagement/RoomManagement";
+import SlotManagement from "@/pages/Dashboard/SlotManagement";
 import HomePage from "@/pages/Home/HomePage";
 import Login from "@/pages/Login/Login";
 import MeetingRoomDetails from "@/pages/MeetingRoomDetails/MeetingRoomDetails";
@@ -79,13 +83,33 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+    ],
+  },
+
+  // dashboard
+  {
+    path: "/dashboard",
+    element: (
+      <ProtectedRoute role="admin">
+        <DashboardLayout />
+      </ProtectedRoute>
+    ),
+    children: [
       {
         path: "/dashboard",
-        element: (
-          <ProtectedRoute role="admin">
-            <Dashboard />
-          </ProtectedRoute>
-        ),
+        element: <Dashboard />,
+      },
+      {
+        path: "room-management",
+        element: <RoomManagement />,
+      },
+      {
+        path: "booking-management",
+        element: <BookingManagement />,
+      },
+      {
+        path: "slot-management",
+        element: <SlotManagement />,
       },
     ],
   },

@@ -16,14 +16,26 @@ export type TUserInfo = {
   role: string;
 };
 
+// export type TRoom = {
+//   _id: string;
+//   name: string;
+//   capacity: number;
+//   pricePerSlot: number;
+//   images: string[];
+//   amenities: string[];
+// };
+
 export type TRoom = {
   _id: string;
   name: string;
-  description: string;
+  roomNo: number;
+  floorNo: number;
   capacity: number;
   pricePerSlot: number;
   images: string[];
-  amenities: string[]; // List of amenities like 'Projector', 'Whiteboard', etc.
+  amenities: string[];
+  isDeleted: boolean;
+  __v: number;
 };
 
 export type TGetRoomsParams = {
