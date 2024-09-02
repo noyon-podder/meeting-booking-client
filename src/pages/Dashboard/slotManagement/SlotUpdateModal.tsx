@@ -18,7 +18,7 @@ import toast from "react-hot-toast";
 
 import { GoPencil } from "react-icons/go";
 
-const RoomUpdateModal = ({ roomId }: { roomId: string }) => {
+const SlotUpdateModal = ({ roomId }: { roomId: string }) => {
   const { data: singleRoom } = useGetSingleRoomQuery(roomId);
   const [roomUpdate] = useUpdateRoomMutation();
 
@@ -67,32 +67,14 @@ const RoomUpdateModal = ({ roomId }: { roomId: string }) => {
           <GlobalForm onSubmit={handleRoomUpdate}>
             <GlobalInput
               type="text"
-              name="Name"
-              label="Room Name"
-              defaultValue={singleRoom?.data?.name}
-            />
-            <GlobalInput
-              type="number"
-              name="roomNo"
-              label="Room Number"
-              defaultValue={singleRoom?.data?.roomNo}
-            />
-            <GlobalInput
-              type="number"
-              name="floorNo"
-              label="Floor No"
-              defaultValue={singleRoom?.data?.floorNo}
-            />
-            <GlobalInput
-              type="number"
-              name="capacity"
-              label="Capacity"
+              name="startTime"
+              label="Start Time"
               defaultValue={singleRoom?.data?.capacity}
             />
             <GlobalInput
-              type="number"
-              name="pricePerSlot"
-              label="Price"
+              type="text"
+              name="endTime"
+              label="End Time"
               defaultValue={singleRoom?.data?.pricePerSlot}
             />
             <Button
@@ -108,4 +90,4 @@ const RoomUpdateModal = ({ roomId }: { roomId: string }) => {
   );
 };
 
-export default RoomUpdateModal;
+export default SlotUpdateModal;

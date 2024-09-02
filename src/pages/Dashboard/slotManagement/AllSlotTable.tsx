@@ -9,10 +9,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import RoomUpdateModal from "../RoomManagement/RoomUpdateModal";
 import { useGetSlotsQuery } from "@/redux/features/slot/slotApi";
 import { TSlot } from "@/types";
 import SlotDeleteConfirmModal from "./SlotDeleteConfirmModal";
+import SlotUpdateModal from "./SlotUpdateModal";
 // import RoomUpdateModal from "./RoomUpdateModal";
 
 export function AllSlotTable() {
@@ -51,7 +51,7 @@ export function AllSlotTable() {
               <TableCell className="">
                 <div className="flex items-center gap-4">
                   {/* update button */}
-                  <RoomUpdateModal roomId={item?._id} />
+                  {/* <SlotUpdateModal roomId={item?._id} /> */}
                   {/* delete button  */}
                   <SlotDeleteConfirmModal slotId={item?._id} />
                 </div>
