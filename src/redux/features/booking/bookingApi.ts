@@ -15,7 +15,14 @@ const bookingApi = baseApi.injectEndpoints({
         };
       },
     }),
+
+    myBookings: builder.query({
+      query: () => {
+        return "/my-bookings";
+      },
+      providesTags: ["Bookings"],
+    }),
   }),
 });
 
-export const { useGetSlotAvailabilityQuery } = bookingApi;
+export const { useGetSlotAvailabilityQuery, useMyBookingsQuery } = bookingApi;

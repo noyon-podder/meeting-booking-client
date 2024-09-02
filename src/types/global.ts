@@ -48,6 +48,20 @@ export type TSlot = {
   __v: number;
 };
 
+export type TBooking = {
+  _id: string;
+  date: string;
+  slots: TSlot[];
+  room: TRoom;
+  user: string;
+  totalAmount: number;
+  isConfirmed: string;
+  isDeleted: boolean;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+};
+
 export type TGetRoomsParams = {
   searchTerm?: string;
   minCapacity?: number;
