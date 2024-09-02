@@ -21,7 +21,7 @@ const LoginModal = ({ isOpen, onClose }: TLoginModalProps) => {
   const handleLoginModalSubmit: SubmitHandler<FieldValues> = (data) => {
     // const accessToken = "dummy_token"; // Replace with actual token from API response
     // dispatch(setAccessToken(accessToken));
-
+    console.log(data);
     onClose();
   };
   return (
