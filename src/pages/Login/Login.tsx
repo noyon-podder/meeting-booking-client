@@ -41,11 +41,6 @@ const Login = () => {
   const location = useLocation();
   const form = location?.state?.from?.pathname || "/";
 
-  const defaultValues = {
-    email: "web.programming12.6@gmail.com",
-    password: "12345678",
-  };
-
   const handleLoginForm: SubmitHandler<FieldValues> = async (data) => {
     const userData = {
       email: data.email,
