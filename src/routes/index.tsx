@@ -8,7 +8,7 @@ import ContactPage from "@/pages/Contact/ContactPage";
 import BookingManagement from "@/pages/Dashboard/BookingManagement";
 import Dashboard from "@/pages/Dashboard/Dashboard";
 import RoomManagement from "@/pages/Dashboard/RoomManagement/RoomManagement";
-import SlotManagement from "@/pages/Dashboard/SlotManagement";
+import SlotManagement from "@/pages/Dashboard/slotManagement/SlotManagement";
 import HomePage from "@/pages/Home/HomePage";
 import Login from "@/pages/Login/Login";
 import MeetingRoomDetails from "@/pages/MeetingRoomDetails/MeetingRoomDetails";

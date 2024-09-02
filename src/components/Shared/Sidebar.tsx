@@ -5,7 +5,7 @@ import { TbBrandBooking } from "react-icons/tb";
 
 const Sidebar = () => {
   return (
-    <div className="w-[300px] bg-color-cardColor h-screen lg:block hidden">
+    <div className="w-[300px] bg-color-cardColor h-screen lg:block hidden fixed top-0 left-0">
       <div className="py-5 border-b border-color-darkBaseColor">
         <h2 className="text-color-lightColor text-center text-2xl font-semibold">
           Schedulify

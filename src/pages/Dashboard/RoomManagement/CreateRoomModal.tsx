@@ -11,6 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useRoomCreateMutation } from "@/redux/features/rooms/roomApi";
+import { customStyles } from "@/styles/multiSelectStyle";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { FieldValues, SubmitHandler } from "react-hook-form";
@@ -96,13 +97,22 @@ const CreateRoomModal = () => {
             <GlobalInput type="number" name="capacity" label="Capacity" />
             <GlobalInput type="number" name="pricePerSlot" label="Price" />
             {/* multi image uploader */}
-            <MultiImageUpload
-              imageUrls={imageUrls}
-              setImageUrls={setImageUrls}
-            />
+            <div className="">
+              <MultiImageUpload
+                imageUrls={imageUrls}
+                setImageUrls={setImageUrls}
+              />
+            </div>
 
             {/* multi select */}
-            <Select isMulti onChange={handleSelectChange} options={options} />
+            <div className="mt-2">
+              <Select
+                isMulti
+                onChange={handleSelectChange}
+                options={options}
+                styles={customStyles}
+              />
+            </div>
 
             {isLoading ? (
               <>

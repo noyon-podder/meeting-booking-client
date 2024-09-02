@@ -11,18 +11,16 @@ import {
 } from "@/components/ui/table";
 import { useGetRoomsQuery } from "@/redux/features/rooms/roomApi";
 import { TRoom } from "@/types";
-import { useState } from "react";
+// import { useState } from "react";
 import RoomUpdateModal from "./RoomUpdateModal";
 
 export function AllRoomTable() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const { data: roomData, isFetching } = useGetRoomsQuery({ searchTerm });
+  const { data: roomData, isFetching } = useGetRoomsQuery({});
 
   if (isFetching) return <Loading />;
 
   return (
     <>
-      <input type="text" onChange={(e) => setSearchTerm(e.target.value)} />
       <Table>
         <TableCaption>A list of all room .</TableCaption>
         <TableHeader>
