@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ModeToggle } from "./ModeToggle";
 import ProfileAvatar from "./ProfileAvatar";
 import DashboardSidebarMenuItems from "@/pages/Dashboard/DashboardSidebarMenuItems";
@@ -11,7 +12,12 @@ const DashboardNavbar = () => {
           <div className="lg:hidden ">
             <DashboardSidebarMenuItems />
           </div>
-          <div>Search</div>
+          <Link
+            to="/"
+            className="text-color-darkBaseColor dark:text-color-darkHeading font-medium px-5 py-2 bg-transparent hover:bg-color-baseLightColor hover:text-white duration-300 rounded-md"
+          >
+            Home
+          </Link>
         </div>
         <div className="flex items-center lg:gap-6 gap-4">
           <ProfileAvatar />

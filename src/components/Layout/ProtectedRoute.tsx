@@ -27,7 +27,6 @@ const ProtectedRoute = ({
     user = verifyToken(token) as CustomJwtPayload;
   }
 
-  console.log(" i am calling");
   const dispatch = useAppDispatch();
   if (!token) {
     dispatch(logout());
@@ -38,7 +37,7 @@ const ProtectedRoute = ({
   if (role) {
     if (role !== user?.role) {
       toast("you are not allowed to access this route");
-      console.log("user");
+      dispatch(logout());
       return <Navigate to="/" replace={true} />;
     }
   }
