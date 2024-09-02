@@ -97,3 +97,60 @@ input[type="number"]::-webkit-inner-spin-button {
 .delete-modal-icon-hide .shadcn-close-icon {
   display: none;
 }
+
+.scroll-top {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  position: fixed;
+  bottom: 105%;
+  right: 50px;
+  font-size: 16px;
+  border-radius: 0;
+  z-index: 9;
+  color: #fff;
+  background: linear-gradient(
+    209deg,
+    rgba(9, 9, 121, 1) 4%,
+    rgba(14, 35, 83, 1) 49%,
+    rgba(0, 59, 149, 1) 97%
+  );
+  text-align: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: 1s ease-in-out;
+  border: none;
+}
+.scroll-top.open {
+  opacity: 1;
+  bottom: 30px;
+  background: linear-gradient(
+    209deg,
+    rgba(9, 9, 121, 1) 4%,
+    rgba(14, 35, 83, 1) 49%,
+    rgba(0, 59, 149, 1) 97%
+  );
+}
+.scroll-top::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  top: 100%;
+  left: 5%;
+  height: 10px;
+  width: 90%;
+  opacity: 1;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.25) 0%,
+    rgba(0, 0, 0, 0) 80%
+  );
+}
+.scroll-top:hover {
+  background: linear-gradient(
+    209deg,
+    rgba(9, 9, 121, 3) 4%,
+    rgba(14, 35, 83, 2) 49%,
+    rgba(0, 59, 149, 2) 97%
+  );
+}

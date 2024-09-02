@@ -2,6 +2,15 @@ import { baseApi } from "@/redux/api/baseApi";
 
 const bookingApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    createBooking: builder.mutation({
+      query: (bookingData) => ({
+        url: "/bookings",
+        method: "POST",
+        body: bookingData,
+      }),
+      invalidatesTags: ["Bookings"],
+    }),
+
     getSlotAvailability: builder.query({
       query: ({ date, roomId }) => {
         // Build query string based on available parameters
@@ -22,7 +31,38 @@ const bookingApi = baseApi.injectEndpoints({
       },
       providesTags: ["Bookings"],
     }),
+
+    getAllBookings: builder.query({
+      query: () => {
+        return "/bookings";
+      },
+      providesTags: ["Bookings"],
+    }),
+
+    updateBookingStatus: builder.mutation({
+      query: ({ id, isConfirmed }) => ({
+        url: `/bookings/${id}`,
+        method: "PUT",
+        body: { isConfirmed },
+      }),
+      invalidatesTags: ["Bookings"],
+    }),
+
+    deleteBooking: builder.mutation({
+      query: (id) => ({
+        url: `/bookings/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Bookings"],
+    }),
   }),
 });
 
-export const { useGetSlotAvailabilityQuery, useMyBookingsQuery } = bookingApi;
+export const {
+  useGetSlotAvailabilityQuery,
+  useMyBookingsQuery,
+  useGetAllBookingsQuery,
+  useCreateBookingMutation,
+  useUpdateBookingStatusMutation,
+  useDeleteBookingMutation,
+} = bookingApi;

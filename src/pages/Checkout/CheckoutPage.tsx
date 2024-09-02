@@ -7,14 +7,16 @@ import UserInfoForm from "./UserInfoForm";
 import { Button } from "@/components/ui/button";
 import { useGetSingleRoomQuery } from "@/redux/features/rooms/roomApi";
 import Loading from "@/components/Loading";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import AmarPay from "/amarPay.png";
 import COD from "/cod.png";
+import { useCreateBookingMutation } from "@/redux/features/booking/bookingApi";
+import toast from "react-hot-toast";
 
 const CheckoutPage = () => {
   const params = useParams();
-  console.log(params);
+  const navigate = useNavigate();
   const userInfo = useAppSelector(currentUserInfo);
   const bookingInfo = useAppSelector((state) => state.booking);
   const [step, setStep] = useState(1);
@@ -24,19 +26,38 @@ const CheckoutPage = () => {
   const nextStep = () => setStep(step + 1);
   const prevStep = () => setStep(step - 1);
 
+  const [createBooking] = useCreateBookingMutation();
+
   if (isLoading) return <Loading />;
 
   // image length
   const images = roomInfo?.data?.images || [];
 
-  const handleAllBookingInformation = () => {
+  const handleAllBookingInformation = async () => {
     const bookingPaymentData = {
       user: bookingInfo?.userId,
-      roomId: bookingInfo?.roomId,
+      room: bookingInfo?.roomId,
       slots: bookingInfo?.slotValue,
       date: bookingInfo?.date,
     };
     console.log("booking info", bookingPaymentData);
+
+    try {
+      const res: any = await createBooking(bookingPaymentData);
+
+      console.log(res);
+
+      if (res.error) {
+        toast.error(res.error.data.message);
+      } else {
+        navigate("/success-booking");
+        toast.success("Booking Create Successfully");
+      }
+      console.log(res);
+    } catch (err) {
+      toast.error("Something went wrong");
+      console.log(err);
+    }
   };
   return (
     <div className="py-10">
@@ -250,7 +271,7 @@ const CheckoutPage = () => {
                   onClick={handleAllBookingInformation}
                   className="bg-color-baseColor tex-white hover:bg-color-baseLightColor text-white"
                 >
-                  Payment
+                  Confirm Booking
                 </Button>
               </div>
             </div>

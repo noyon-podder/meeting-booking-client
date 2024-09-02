@@ -35,6 +35,7 @@ export function AllSlotTable() {
             <TableHead className="min-w-[150px]">Date</TableHead>
             <TableHead>Start Time</TableHead>
             <TableHead>End Time</TableHead>
+            {/* <TableHead>Booked</TableHead> */}
             <TableHead>Action</TableHead>
           </TableRow>
         </TableHeader>
@@ -48,6 +49,7 @@ export function AllSlotTable() {
               <TableCell>{item?.date}</TableCell>
               <TableCell>{item?.startTime}</TableCell>
               <TableCell>{item?.endTime}</TableCell>
+              {/* <TableCell>{item?.isBooked ? "Booked" : "UnBook"}</TableCell> */}
               <TableCell className="">
                 <div className="flex items-center gap-4">
                   {/* update button */}

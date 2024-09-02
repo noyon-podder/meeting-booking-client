@@ -1,7 +1,7 @@
 import { customStyles } from "@/styles/multiSelectStyle";
 import { OptionType } from "@/types";
 import React from "react";
-import Select, { MultiValue, StylesConfig } from "react-select";
+import Select, { MultiValue } from "react-select";
 
 type TAvailabilitySlot = {
   _id: string;

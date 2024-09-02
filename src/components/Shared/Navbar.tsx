@@ -27,10 +27,10 @@ const Navbar = () => {
             {!user?.email ? (
               <>
                 <Link
-                  to="/register"
+                  to="/login"
                   className="px-[16px] py-[5px] text-color-baseColor font-semibold rounded-[2px] hover:bg-color-darkHeading block bg-white"
                 >
-                  Register
+                  Login
                 </Link>
               </>
             ) : (

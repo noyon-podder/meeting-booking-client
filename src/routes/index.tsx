@@ -4,8 +4,9 @@ import ProtectedRoute from "@/components/Layout/ProtectedRoute";
 import AboutPage from "@/pages/About/AboutPage";
 import BookingForm from "@/pages/Booking/BookingForm";
 import CheckoutPage from "@/pages/Checkout/CheckoutPage";
+import SuccessView from "@/pages/Checkout/SuccessView";
 import ContactPage from "@/pages/Contact/ContactPage";
-import BookingManagement from "@/pages/Dashboard/BookingManagement";
+import BookingManagement from "@/pages/Dashboard/booking/BookingManagement";
 import Dashboard from "@/pages/Dashboard/Dashboard";
 import RoomManagement from "@/pages/Dashboard/RoomManagement/RoomManagement";
 import SlotManagement from "@/pages/Dashboard/slotManagement/SlotManagement";
@@ -74,6 +75,10 @@ export const router = createBrowserRouter([
             <CheckoutPage />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: "/success-booking",
+        element: <SuccessView />,
       },
       {
         path: "/my-bookings",
