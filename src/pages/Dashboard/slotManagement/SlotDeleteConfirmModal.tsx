@@ -24,14 +24,11 @@ export default function SlotDeleteConfirmModal({
     try {
       const res: any = await slotDelete(slotId);
 
-      console.log(res);
-
       if (res.error) {
         toast.error(res.error.data.message);
       } else {
         toast.success("Slot Delete Successfully");
       }
-      console.log(res);
     } catch (err) {
       toast.error("Something went wrong");
       console.log(err);

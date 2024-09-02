@@ -42,7 +42,6 @@ const slotApi = baseApi.injectEndpoints({
 
     getSingleRoom: builder.query({
       query: (roomId) => {
-        console.log(`/rooms/${roomId}`);
         return {
           url: `/rooms/${roomId}`,
           method: "GET",

@@ -34,18 +34,14 @@ const RoomUpdateModal = ({ roomId }: { roomId: string }) => {
       roomId: roomId,
     };
 
-    console.log({ updateDataInfo });
     try {
       const res: any = await roomUpdate(updateDataInfo);
-
-      console.log(res);
 
       if (res.error) {
         toast.error(res.error.data.message);
       } else {
         toast.success("Room Update Successfully");
       }
-      console.log(res);
     } catch (err) {
       toast.error("Something went wrong");
       console.log(err);

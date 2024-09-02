@@ -6,9 +6,6 @@ const SuccessView = () => {
   const bookingInfo = useAppSelector((state) => state.booking);
   const { data: roomData } = useGetSingleRoomQuery(bookingInfo?.roomId);
 
-  console.log(roomData);
-
-  console.log("success", { bookingInfo });
   return (
     <div className="h-screen flex items-center justify-center flex-col">
       <div className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center">

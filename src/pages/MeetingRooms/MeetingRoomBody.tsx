@@ -39,7 +39,6 @@ const MeetingRoomBody = () => {
     maxPrice,
     sort,
   });
-  console.log(searchTerm, isFetching);
 
   dispatch(setLength(roomData?.data?.length));
 

@@ -30,8 +30,6 @@ const BookingForm = () => {
     roomId: params.id,
   });
 
-  console.log({ selectedOption });
-
   const handleBookingFormSubmit = (data: FieldValues) => {
     const bookingInfo = {
       roomId: params.id || "",
@@ -47,8 +45,6 @@ const BookingForm = () => {
     dispatch(setBookingInfo(bookingInfo));
 
     navigate(`/meeting-rooms/${params.id}/checkout`);
-
-    console.log({ bookingInfo });
   };
   return (
     <div className="lg:py-20 py-10">

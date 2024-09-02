@@ -20,8 +20,6 @@ export function AllSlotTable() {
 
   if (isFetching) return <Loading />;
 
-  console.log(slotData);
-
   return (
     <>
       <Table>

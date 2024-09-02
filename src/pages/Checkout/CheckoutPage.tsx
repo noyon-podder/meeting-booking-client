@@ -40,12 +40,9 @@ const CheckoutPage = () => {
       slots: bookingInfo?.slotValue,
       date: bookingInfo?.date,
     };
-    console.log("booking info", bookingPaymentData);
 
     try {
       const res: any = await createBooking(bookingPaymentData);
-
-      console.log(res);
 
       if (res.error) {
         toast.error(res.error.data.message);
@@ -53,7 +50,6 @@ const CheckoutPage = () => {
         navigate("/success-booking");
         toast.success("Booking Create Successfully");
       }
-      console.log(res);
     } catch (err) {
       toast.error("Something went wrong");
       console.log(err);

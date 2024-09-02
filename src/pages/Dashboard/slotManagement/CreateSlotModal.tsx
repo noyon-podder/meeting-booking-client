@@ -39,7 +39,7 @@ const CreateSlotModal = () => {
       toast.error("Start time cannot be greater than end time.");
       return;
     }
-    console.log({ data });
+    
 
     const slotData = {
       date: moment(date).format("YYYY-MM-DD"),
@@ -48,13 +48,13 @@ const CreateSlotModal = () => {
       room: selectRoomName,
     };
 
-    console.log({ slotData });
+    
 
     // Logic to handle slot creation goes here
     try {
       const res: any = await slotCreate(slotData);
 
-      console.log(res);
+      
 
       if (res.error) {
         toast.error(res.error.data.message);
@@ -62,7 +62,7 @@ const CreateSlotModal = () => {
         toast.success("Slot Create Successfully");
         setIsOpen(false);
       }
-      console.log(res);
+      
     } catch (err) {
       toast.error("Something went wrong");
       console.log(err);

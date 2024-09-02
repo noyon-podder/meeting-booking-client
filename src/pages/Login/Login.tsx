@@ -47,8 +47,6 @@ const Login = () => {
   };
 
   const handleLoginForm: SubmitHandler<FieldValues> = async (data) => {
-    console.log("Login from : ", data);
-
     const userData = {
       email: data.email,
       password: data.password,
@@ -67,15 +65,12 @@ const Login = () => {
 
       dispatch(setUser(currentUser));
 
-      console.log(res);
-
       if (res.error) {
         toast.error(res.error.data.message);
       } else {
         toast.success("Login Successfully ☺");
         navigate(form, { replace: true });
       }
-      console.log(res);
     } catch (err) {
       toast.error("Something went wrong");
       console.log(err);

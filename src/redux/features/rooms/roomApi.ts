@@ -11,7 +11,6 @@ const roomAPi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllRooms: builder.query({
       query: (params) => {
-        console.log({ params });
         const urlParams = new URLSearchParams();
 
         if (
@@ -27,10 +26,7 @@ const roomAPi = baseApi.injectEndpoints({
           });
         }
 
-        console.log(`rooms?${urlParams.toString()}`);
-
         if (params) {
-          console.log({ urlParams });
           return `rooms?${urlParams.toString()}`;
         } else {
           return "/rooms";
@@ -64,7 +60,6 @@ const roomAPi = baseApi.injectEndpoints({
 
     getSingleRoom: builder.query({
       query: (roomId) => {
-        console.log(`/rooms/${roomId}`);
         return {
           url: `/rooms/${roomId}`,
           method: "GET",

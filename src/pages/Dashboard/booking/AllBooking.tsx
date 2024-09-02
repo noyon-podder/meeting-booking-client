@@ -36,7 +36,6 @@ const AllBooking = () => {
       id: id,
       isConfirmed: statusValue,
     };
-    console.log(bookingStatus);
 
     try {
       const res: any = await updateBookingStatus(bookingStatus);

@@ -33,9 +33,6 @@ const CreateRoomModal = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleRoomCreate: SubmitHandler<FieldValues> = async (data) => {
-    console.log({ imageUrls });
-    console.log({ data });
-
     const createNewRoomData = {
       name: data?.name,
       roomNo: Number(data?.roomNo),
@@ -46,12 +43,8 @@ const CreateRoomModal = () => {
       amenities: selectedAminties.map((amenity) => amenity.value),
     };
 
-    console.log(createNewRoomData);
-
     try {
       const res: any = await roomCreate(createNewRoomData);
-
-      console.log(res);
 
       if (res.error) {
         toast.error(res.error.data.message);
@@ -61,7 +54,6 @@ const CreateRoomModal = () => {
         setImageUrls([]);
         setSelectedAminties([]);
       }
-      console.log(res);
     } catch (err) {
       toast.error("Something went wrong");
       console.log(err);

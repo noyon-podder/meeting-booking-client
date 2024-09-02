@@ -23,14 +23,11 @@ export default function DeleteBookingModal({ bookingId }: TDeleteConfirmModal) {
     try {
       const res: any = await bookingDelete(bookingId);
 
-      console.log(res);
-
       if (res.error) {
         toast.error(res.error.data.message);
       } else {
         toast.success("Delete Successfully");
       }
-      console.log(res);
     } catch (err) {
       toast.error("Something went wrong");
       console.log(err);
