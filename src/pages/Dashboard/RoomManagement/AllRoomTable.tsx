@@ -13,7 +13,6 @@ import { useGetRoomsQuery } from "@/redux/features/rooms/roomApi";
 import { TRoom } from "@/types";
 import { useState } from "react";
 import RoomUpdateModal from "./RoomUpdateModal";
-import ImageUpload from "@/components/Shared/MultiImageUpload";
 
 export function AllRoomTable() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -23,6 +22,7 @@ export function AllRoomTable() {
 
   return (
     <>
+      <input type="text" onChange={(e) => setSearchTerm(e.target.value)} />
       <Table>
         <TableCaption>A list of all room .</TableCaption>
         <TableHeader>

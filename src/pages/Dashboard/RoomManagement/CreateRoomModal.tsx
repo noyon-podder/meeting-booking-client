@@ -15,7 +15,7 @@ import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
-import Select from "react-select";
+import Select, { MultiValue } from "react-select";
 
 const options = [
   { value: "tv", label: "TV" },
@@ -26,7 +26,9 @@ const options = [
 const CreateRoomModal = () => {
   const [imageUrls, setImageUrls] = useState<string[]>([]);
   const [roomCreate, { isLoading }] = useRoomCreateMutation();
-  const [selectedAminties, setSelectedAminties] = useState([]);
+  const [selectedAminties, setSelectedAminties] = useState<
+    { value: string; label: string }[]
+  >([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleRoomCreate: SubmitHandler<FieldValues> = async (data) => {
@@ -64,6 +66,14 @@ const CreateRoomModal = () => {
       console.log(err);
     }
   };
+
+  // Wrapper function for handling multi-select change
+  const handleSelectChange = (
+    newValue: MultiValue<{ value: string; label: string }>
+  ) => {
+    setSelectedAminties(newValue as { value: string; label: string }[]);
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
@@ -92,12 +102,7 @@ const CreateRoomModal = () => {
             />
 
             {/* multi select */}
-            <Select
-              isMulti
-              defaultValue={selectedAminties}
-              onChange={setSelectedAminties}
-              options={options}
-            />
+            <Select isMulti onChange={handleSelectChange} options={options} />
 
             {isLoading ? (
               <>
