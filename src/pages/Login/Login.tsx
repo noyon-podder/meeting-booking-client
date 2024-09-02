@@ -93,7 +93,6 @@ const Login = () => {
           <GlobalForm
             onSubmit={handleLoginForm}
             resolver={zodResolver(loginValidationSchema)}
-            defaultValues={defaultValues}
           >
             <GlobalInput
               type="text"
