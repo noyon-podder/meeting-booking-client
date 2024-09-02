@@ -12,7 +12,6 @@ import {
 import { useGetSlotsQuery } from "@/redux/features/slot/slotApi";
 import { TSlot } from "@/types";
 import SlotDeleteConfirmModal from "./SlotDeleteConfirmModal";
-import SlotUpdateModal from "./SlotUpdateModal";
 // import RoomUpdateModal from "./RoomUpdateModal";
 
 export function AllSlotTable() {

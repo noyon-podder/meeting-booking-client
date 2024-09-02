@@ -2,5 +2,6 @@
 
 Admin Credentials
 
-email: web.programmin12.6@gmail.com
-password: 12345678
+email: "web.programming12.6@gmail.com",
+<br/>
+password: "12345678",
