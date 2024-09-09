@@ -23,21 +23,17 @@ const RoomUpdateModal = ({ roomId }: { roomId: string }) => {
   const [roomUpdate] = useUpdateRoomMutation();
 
   const handleRoomUpdate: SubmitHandler<FieldValues> = async (data) => {
-    const updateDataInfo = {
-      roomUpdateData: {
-        name: data?.name,
-        roomNo: Number(data?.roomNo),
-        capacity: Number(data?.capacity),
-        pricePerSlot: Number(data?.pricePerSlot),
-        florNo: Number(data?.florNo),
-      },
+    const updateRoomDataInfo = {
+      name: data?.name,
+      roomNo: Number(data.roomNo),
+      capacity: Number(data.capacity),
+      pricePerSlot: Number(data.pricePerSlot),
+      floorNo: Number(data.floorNo),
       roomId: roomId,
     };
 
-    console.log(updateDataInfo);
-
     try {
-      const res: any = await roomUpdate(updateDataInfo);
+      const res: any = await roomUpdate(updateRoomDataInfo);
 
       if (res.error) {
         toast.error(res.error.data.message);
@@ -67,7 +63,7 @@ const RoomUpdateModal = ({ roomId }: { roomId: string }) => {
           <GlobalForm onSubmit={handleRoomUpdate}>
             <GlobalInput
               type="text"
-              name="Name"
+              name="name"
               label="Room Name"
               defaultValue={singleRoom?.data?.name}
             />

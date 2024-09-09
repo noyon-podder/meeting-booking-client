@@ -95,7 +95,7 @@ const AllBooking = () => {
                     }
                     ${
                       item.isConfirmed === "unconfirmed" &&
-                      "bg-yellow-400 dark:bg-yellow-700"
+                      "bg-indigo-400 dark:bg-indigo-700"
                     }
                     ${
                       item.isConfirmed === "approve" &&
@@ -103,7 +103,8 @@ const AllBooking = () => {
                     }
                     `}
                 >
-                  {item.isConfirmed}
+                  {(item.isConfirmed === "unconfirmed" && "pending") ||
+                    item.isConfirmed}
                 </span>
               </TableCell>
               <TableCell>

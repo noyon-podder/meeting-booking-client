@@ -67,7 +67,7 @@ const Login = () => {
         navigate(form, { replace: true });
       }
     } catch (err) {
-      toast.error("Something went wrong");
+      toast.error("Invalid Credentials");
       console.log(err);
     }
   };

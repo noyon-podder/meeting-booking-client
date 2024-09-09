@@ -85,11 +85,14 @@ const roomAPi = baseApi.injectEndpoints({
     }),
 
     updateRoom: builder.mutation({
-      query: ({ roomId, roomUpdateData }) => ({
-        url: `/rooms/${roomId}`,
-        method: "PUT",
-        body: roomUpdateData,
-      }),
+      query: (roomUpdateData) => {
+        console.log({ roomUpdateData });
+        return {
+          url: `/rooms/${roomUpdateData.roomId}`,
+          method: "PUT",
+          body: roomUpdateData,
+        };
+      },
       invalidatesTags: ["Rooms"],
     }),
   }),

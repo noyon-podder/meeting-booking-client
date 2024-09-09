@@ -8,6 +8,7 @@ import SuccessView from "@/pages/Checkout/SuccessView";
 import ContactPage from "@/pages/Contact/ContactPage";
 import BookingManagement from "@/pages/Dashboard/booking/BookingManagement";
 import Dashboard from "@/pages/Dashboard/Dashboard";
+import CreateRoom from "@/pages/Dashboard/RoomManagement/CreateRoom";
 import RoomManagement from "@/pages/Dashboard/RoomManagement/RoomManagement";
 import SlotManagement from "@/pages/Dashboard/slotManagement/SlotManagement";
 import HomePage from "@/pages/Home/HomePage";
@@ -115,6 +116,10 @@ export const router = createBrowserRouter([
       {
         path: "slot-management",
         element: <SlotManagement />,
+      },
+      {
+        path: "create-room",
+        element: <CreateRoom />,
       },
     ],
   },

@@ -1,5 +1,5 @@
+import { Link } from "react-router-dom";
 import { AllRoomTable } from "./AllRoomTable";
-import CreateRoomModal from "./CreateRoomModal";
 
 const RoomManagement = () => {
   return (
@@ -8,7 +8,13 @@ const RoomManagement = () => {
         <h2 className="lg:text-4xl text-3xl font-semibold text-color-darkBaseColor dark:text-color-lightColor">
           All Rooms{" "}
         </h2>
-        <CreateRoomModal />
+        {/* <CreateRoomModal /> */}
+        <Link
+          to="/dashboard/create-room"
+          className="px-4 py-[10px] rounded-md dark:bg-color-darkBaseColor bg-color-baseColor  text-white font-medium "
+        >
+          Create Room
+        </Link>
       </div>
 
       <AllRoomTable />
