@@ -43,7 +43,7 @@ const MyBookings = () => {
               <TableCell>{item?.date}</TableCell>
               <TableCell>
                 {item.slots.map((slot, index) => (
-                  <Badge key={index} className="mr-1 bg-blue-500">
+                  <Badge key={index} className="mr-1 bg-blue-500 text-white">
                     {slot?.startTime} - {slot?.endTime}
                   </Badge>
                 ))}

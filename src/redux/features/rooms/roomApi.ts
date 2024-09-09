@@ -86,7 +86,6 @@ const roomAPi = baseApi.injectEndpoints({
 
     updateRoom: builder.mutation({
       query: (roomUpdateData) => {
-        console.log({ roomUpdateData });
         return {
           url: `/rooms/${roomUpdateData.roomId}`,
           method: "PUT",

@@ -4,8 +4,9 @@ import { RootState } from "@/redux/store"; // Make sure to import RootState from
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://booking-server-blond.vercel.app/api",
+    // baseUrl: "https://booking-server-blond.vercel.app/api",
     // baseUrl: "http://localhost:5000/api",
+    baseUrl: `${import.meta.env.VITE_SERVER_URL}/api`,
 
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token;
