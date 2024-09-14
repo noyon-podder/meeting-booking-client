@@ -9,11 +9,11 @@ import { useState } from "react";
 import { FieldValues } from "react-hook-form";
 import MultiSelect from "./MultiSelect";
 import moment from "moment";
-import { useGetSlotAvailabilityQuery } from "@/redux/features/booking/bookingApi";
 import { useNavigate, useParams } from "react-router-dom";
 import { MultiValue } from "react-select";
 import { OptionType } from "@/types";
 import { setBookingInfo } from "@/redux/features/booking/bookingSlice";
+import { useGetSlotAvailabilityQuery } from "@/redux/features/slot/slotApi";
 
 const BookingForm = () => {
   const params = useParams();

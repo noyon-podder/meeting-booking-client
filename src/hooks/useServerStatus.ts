@@ -20,9 +20,9 @@ const useServerStatus = (url: string) => {
     };
 
     checkServerStatus();
-  }, [url]); // Runs when the URL changes
+  }, [url]);
 
-  return serverError; // Returns whether there is a server error
+  return serverError;
 };
 
 export default useServerStatus;

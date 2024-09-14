@@ -11,19 +11,19 @@ const bookingApi = baseApi.injectEndpoints({
       invalidatesTags: ["Bookings"],
     }),
 
-    getSlotAvailability: builder.query({
-      query: ({ date, roomId }) => {
-        // Build query string based on available parameters
-        const params: Record<string, string> = {};
-        if (date) params.date = date;
-        if (roomId) params.roomId = roomId;
+    // getSlotAvailability: builder.query({
+    //   query: ({ date, roomId }) => {
+    //     // Build query string based on available parameters
+    //     const params: Record<string, string> = {};
+    //     if (date) params.date = date;
+    //     if (roomId) params.roomId = roomId;
 
-        return {
-          url: `/slots/availability`,
-          params,
-        };
-      },
-    }),
+    //     return {
+    //       url: `/slots/availability`,
+    //       params,
+    //     };
+    //   },
+    // }),
 
     myBookings: builder.query({
       query: () => {
@@ -59,7 +59,7 @@ const bookingApi = baseApi.injectEndpoints({
 });
 
 export const {
-  useGetSlotAvailabilityQuery,
+  // useGetSlotAvailabilityQuery,
   useMyBookingsQuery,
   useGetAllBookingsQuery,
   useCreateBookingMutation,

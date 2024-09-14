@@ -9,46 +9,30 @@ import { baseApi } from "@/redux/api/baseApi";
 // }
 const slotApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    // getRooms: builder.query<any, GetRoomsQueryParams>({
-    //   query: ({ searchTerm, filter, sort } = {}) => {
-    //     const queryParams: string[] = [];
+    // only available slot get
+    getSlotAvailability: builder.query({
+      query: ({ date, roomId }) => {
+        // Build query string based on available parameters
+        const params: Record<string, string> = {};
+        if (date) params.date = date;
+        if (roomId) params.roomId = roomId;
 
-    //     if (searchTerm) {
-    //       queryParams.push(`searchTerm=${searchTerm}`);
-    //     }
-
-    //     if (filter) {
-    //       queryParams.push(`filter=${filter}`);
-    //     }
-
-    //     if (sort) {
-    //       queryParams.push(`sort=${sort}`);
-    //     }
-
-    //     const queryString =
-    //       queryParams.length > 0 ? `?${queryParams.join("&")}` : "";
-
-    //     return `rooms${queryString}`;
-    //   },
-    //   providesTags: ["Rooms"],
-    // }),
-
-    getSlots: builder.query({
-      query: () => {
-        return "/slots/availability";
-      },
-      providesTags: ["Slots"],
-    }),
-
-    getSingleRoom: builder.query({
-      query: (roomId) => {
         return {
-          url: `/rooms/${roomId}`,
-          method: "GET",
+          url: `/slots/availability`,
+          params,
         };
       },
     }),
 
+    // get all slots only admin view with is booked true
+    getAllSlots: builder.query({
+      query: () => {
+        return "/slots";
+      },
+      providesTags: ["Slots"],
+    }),
+
+    // slot create
     slotCreate: builder.mutation({
       query: (slotData) => ({
         url: "/slots",
@@ -58,6 +42,7 @@ const slotApi = baseApi.injectEndpoints({
       invalidatesTags: ["Slots"],
     }),
 
+    // slot delete
     slotDelete: builder.mutation({
       query: (slotId) => ({
         url: `/slots/${slotId}`,
@@ -66,22 +51,24 @@ const slotApi = baseApi.injectEndpoints({
       invalidatesTags: ["Slots"],
     }),
 
-    updateRoom: builder.mutation({
-      query: ({ roomId, roomUpdateData }) => ({
-        url: `/rooms/${roomId}`,
-        method: "PUT",
-        body: roomUpdateData,
-      }),
-      invalidatesTags: ["Rooms"],
+    // update slot properties
+    updateSlot: builder.mutation({
+      query: (slotUpdateData) => {
+        return {
+          url: `/slots/${slotUpdateData.slotId}`,
+          method: "PUT",
+          body: slotUpdateData,
+        };
+      },
+      invalidatesTags: ["Slots"],
     }),
   }),
 });
 
 export const {
-  useGetSingleRoomQuery,
-  //   useGetRoomsQuery,
-  useGetSlotsQuery,
+  useGetAllSlotsQuery,
+  useGetSlotAvailabilityQuery,
   useSlotDeleteMutation,
-  useUpdateRoomMutation,
+  useUpdateSlotMutation,
   useSlotCreateMutation,
 } = slotApi;

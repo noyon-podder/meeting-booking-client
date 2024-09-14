@@ -13,11 +13,14 @@ import {
 } from "@/components/ui/popover";
 
 type TSelectDateProps = {
-  date: Date | undefined;
-  setDate: (date: Date | undefined) => void;
+  date: Date | undefined | string;
+  setDate: (date: Date | undefined | string) => void;
 };
 
 export function SelectData({ date, setDate }: TSelectDateProps) {
+  const disabledDays = {
+    before: new Date(),
+  };
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -38,6 +41,7 @@ export function SelectData({ date, setDate }: TSelectDateProps) {
           selected={date}
           onSelect={setDate}
           initialFocus
+          disabled={disabledDays}
         />
       </PopoverContent>
     </Popover>

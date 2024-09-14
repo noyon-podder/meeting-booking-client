@@ -9,14 +9,16 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { useGetSlotsQuery } from "@/redux/features/slot/slotApi";
 import { TSlot } from "@/types";
 import SlotDeleteConfirmModal from "./SlotDeleteConfirmModal";
+import { useGetAllSlotsQuery } from "@/redux/features/slot/slotApi";
+import SlotUpdateModal from "./SlotUpdateModal";
 // import RoomUpdateModal from "./RoomUpdateModal";
 
 export function AllSlotTable() {
-  const { data: slotData, isFetching } = useGetSlotsQuery({});
+  const { data: slotData, isFetching } = useGetAllSlotsQuery({});
 
+  console.log({ slotData });
   if (isFetching) return <Loading />;
 
   return (
@@ -32,7 +34,7 @@ export function AllSlotTable() {
             <TableHead className="min-w-[150px]">Date</TableHead>
             <TableHead>Start Time</TableHead>
             <TableHead>End Time</TableHead>
-            {/* <TableHead>Booked</TableHead> */}
+            <TableHead>Booked</TableHead>
             <TableHead>Action</TableHead>
           </TableRow>
         </TableHeader>
@@ -46,11 +48,24 @@ export function AllSlotTable() {
               <TableCell>{item?.date}</TableCell>
               <TableCell>{item?.startTime}</TableCell>
               <TableCell>{item?.endTime}</TableCell>
-              {/* <TableCell>{item?.isBooked ? "Booked" : "UnBook"}</TableCell> */}
+              <TableCell>
+                <p
+                  className={`text-white px-1 text-center py-[2px] rounded-2xl font-medium ${
+                    item.isBooked
+                      ? "dark:bg-green-700 bg-green-600 "
+                      : "dark:bg-color-baseColor bg-indigo-600 "
+                  }      
+                  `}
+                >
+                  {item?.isBooked ? "Booked" : "Free"}
+                </p>
+              </TableCell>
               <TableCell className="">
                 <div className="flex items-center gap-4">
                   {/* update button */}
-                  {/* <SlotUpdateModal roomId={item?._id} /> */}
+                  <div className={`${item?.isBooked && "opacity-0 invisible"}`}>
+                    <SlotUpdateModal slot={item} />
+                  </div>
                   {/* delete button  */}
                   <SlotDeleteConfirmModal slotId={item?._id} />
                 </div>

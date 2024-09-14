@@ -1,14 +1,10 @@
 import { currentToken, logout } from "@/redux/features/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { verifyToken } from "@/utils/verifyToken";
-import { ReactNode, useEffect } from "react";
-import { Navigate, useLocation } from "react-router-dom";
-import { toast } from "sonner";
-import { JwtPayload } from "jsonwebtoken";
 
-interface CustomJwtPayload extends JwtPayload {
-  role?: "user" | "admin";
-}
+import { ReactNode, useEffect } from "react";
+import toast from "react-hot-toast";
+import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({
   children,
@@ -17,40 +13,45 @@ const ProtectedRoute = ({
   children: ReactNode;
   role?: "user" | "admin";
 }) => {
-  const token = useAppSelector(currentToken); // Get the current token from the Redux store
-  const location = useLocation();
-  const dispatch = useAppDispatch();
+  const token = useAppSelector(currentToken);
+  // const dispatch = useAppDispatch();
 
-  let user: CustomJwtPayload | null = null;
+  // useEffect(() => {
+  //   if (token) {
+  //     try {
+  //       const decodedToken: { exp: number } = jwtDecode(token);
+  //       const currentTime = Date.now() / 1000;
 
-  // Decode the token if it exists
-  if (token) {
-    user = verifyToken(token) as CustomJwtPayload;
-  }
+  //       if (decodedToken.exp < currentTime) {
+  //         dispatch(logout());
+  //         toast.success("Logout");
+  //       }
+  //     } catch (error) {
+  //       console.error("Token decoding error:", error);
+  //       dispatch(logout());
+  //       toast.error("Authentication error. Please log in again.");
+  //     }
+  //   }
+  // }, [token, dispatch]);
 
-  console.log({ user });
-
-  // Automatically log out if the token is expired or not available
-  useEffect(() => {
-    if (!token || (user && user.exp && Date.now() >= user.exp * 1000)) {
-      dispatch(logout());
-      toast("Your session has expired. Please log in again.");
-    }
-  }, [token, user, dispatch]);
-
-  // Redirect to login if the token is not available
   if (!token) {
-    return <Navigate to="/login" state={{ from: location }} replace={true} />;
+    return <Navigate to="/login" replace={true} />;
   }
 
-  // Check if the user's role matches the required role for the route
-  if (role && role !== user?.role) {
-    toast("You are not allowed to access this route.");
-    return <Navigate to="/" replace={true} />;
+  const user = verifyToken(token);
+  if (!user) {
+    toast.error("Invalid Token. Please Login Again");
+    return <Navigate to="/login" replace={true} />;
   }
 
-  // If everything is fine, render the children components
-  return <>{children}</>;
+  // if (user?.role) {
+  //   if (role !== user?.role) {
+  //     toast.error("Access Denied. Insufficient Permissions.");
+  //     return <Navigate to="/login" replace={true} />;
+  //   }
+  // }
+
+  return children;
 };
 
 export default ProtectedRoute;

@@ -1,4 +1,4 @@
-import { useGetSingleRoomQuery } from "@/redux/features/slot/slotApi";
+import { useGetSingleRoomQuery } from "@/redux/features/rooms/roomApi";
 import { useAppSelector } from "@/redux/hook";
 import { FaCheck } from "react-icons/fa6";
 

@@ -9,8 +9,7 @@ import useServerStatus from "./hooks/useServerStatus";
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const testerRoute = import.meta.env.VITE_SERVER_URL;
-  const serverError = useServerStatus(testerRoute);
+  const serverError = useServerStatus(import.meta.env.VITE_SERVER_URL);
 
   const scrollToTop = () => {
     window.scrollTo({
