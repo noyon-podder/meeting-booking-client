@@ -1,5 +1,3 @@
-"use client";
-
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 
@@ -13,21 +11,22 @@ import {
 } from "@/components/ui/popover";
 
 type TSelectDateProps = {
-  date: Date | undefined | string;
-  setDate: (date: Date | undefined | string) => void;
+  date: Date | undefined; // Adjusted to allow undefined as well
+  setDate: (date: Date | undefined) => void; // Adjusted to allow undefined
 };
 
 export function SelectData({ date, setDate }: TSelectDateProps) {
   const disabledDays = {
     before: new Date(),
   };
+
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button
           variant={"outline"}
           className={cn(
-            "w-full justify-start text-left font-normal dark:border-gray-700  bg-transparent h-11 ",
+            "w-full justify-start text-left font-normal dark:border-gray-700 bg-transparent h-11",
             !date && "text-muted-foreground"
           )}
         >

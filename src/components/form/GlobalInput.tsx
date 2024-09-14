@@ -11,8 +11,9 @@ type TGlobalInputProps = {
   label?: string;
   value?: string;
   defaultValue?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; // Add this
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
+
 const GlobalInput = ({
   name,
   type,
@@ -20,7 +21,7 @@ const GlobalInput = ({
   className,
   label,
   value,
-  onChange, // Add onChange handler
+  onChange,
   defaultValue,
 }: TGlobalInputProps) => {
   const {
@@ -29,6 +30,10 @@ const GlobalInput = ({
   } = useFormContext();
 
   const isError = !!errors[name];
+
+  // Merge react-hook-form's register with the onChange handler
+  const { onChange: formOnChange, ...rest } = register(name);
+
   return (
     <div className="mb-5">
       {label ? (
@@ -40,16 +45,21 @@ const GlobalInput = ({
         type={type}
         placeholder={placeholder}
         value={value} // Use value for controlled input
-        onChange={onChange} // Add onChange for controlled input
         defaultValue={defaultValue}
         id={name}
-        {...register(name)}
         className={cn(
           className,
           isError
             ? "border-red-500 dark:border-red-700"
             : "focus:dark:border-color-baseLightColor focus:border-color-baseColor"
         )}
+        onChange={(e) => {
+          formOnChange(e); // Call react-hook-form's onChange
+          if (onChange) {
+            onChange(e); // Call custom onChange if provided
+          }
+        }}
+        {...rest} // Spread the rest of the props from react-hook-form's register
       />
       {isError && (
         <p className="text-red-500 mt-1 dark:text-red-700 text-sm">

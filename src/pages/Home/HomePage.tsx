@@ -1,4 +1,5 @@
 import HeroBanner from "./HeroBanner";
+import LatestRoom from "./LatestRoom";
 import NewsletterSignup from "./Newsletter";
 import ServiceAdvertisement from "./ServiceAdvertisement";
 import Testimonials from "./Testimonials";
@@ -9,6 +10,7 @@ const HomePage = () => {
     <div className="">
       <HeroBanner />
       <ServiceAdvertisement />
+      <LatestRoom />
       <Testimonials />
       <NewsletterSignup />
       <WhyChooseUs />

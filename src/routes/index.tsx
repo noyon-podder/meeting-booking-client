@@ -84,7 +84,7 @@ export const router = createBrowserRouter([
       {
         path: "/my-bookings",
         element: (
-          <ProtectedRoute role="user">
+          <ProtectedRoute>
             <MyBookings />
           </ProtectedRoute>
         ),

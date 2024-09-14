@@ -53,7 +53,7 @@ const HeroBanner = () => {
             <Link to="meeting-rooms">
               <Button
                 size="lg"
-                className="bg-color-baseLightColor hover:bg-color-baseColor text-white text-[20px] font-medium py-6 "
+                className="bg-gradient hover:bg-color-baseColor text-white text-[20px] font-medium py-6 "
               >
                 Book Now
               </Button>

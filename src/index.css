@@ -68,8 +68,16 @@
   }
 }
 
+.bg-gradient {
+  background: linear-gradient(
+    209deg,
+    rgba(9, 9, 121, 1) 4%,
+    rgba(14, 35, 83, 1) 49%,
+    rgba(0, 59, 149, 1) 97%
+  );
+}
+
 .gradient-overlay {
-  background: rgb(9, 9, 121);
   background: linear-gradient(
     209deg,
     rgba(9, 9, 121, 1) 4%,

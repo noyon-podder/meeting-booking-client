@@ -38,13 +38,13 @@ const ProfileAvatar = () => {
                 </Link>
               </li>
             )}
-            {user?.role === "user" && (
-              <li className="px-4 border-b py-2 block bg-transparent hover:bg-[#1A4FA0] transition-colors hover:text-white text-color-heading dark:text-color-lightColor duration-300">
-                <Link to="/my-bookings" className="text-base font-semibold  ">
-                  My Bookings
-                </Link>
-              </li>
-            )}
+
+            <li className="px-4 border-b py-2 block bg-transparent hover:bg-[#1A4FA0] transition-colors hover:text-white text-color-heading dark:text-color-lightColor duration-300">
+              <Link to="/my-bookings" className="text-base font-semibold  ">
+                My Bookings
+              </Link>
+            </li>
+
             <li
               onClick={handelLogout}
               className="px-4  py-2 text-base font-semibold  block bg-transparent hover:bg-[#1A4FA0] transition-colors hover:text-white text-color-heading dark:text-color-lightColor duration-300 cursor-pointer"
