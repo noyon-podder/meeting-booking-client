@@ -11,7 +11,7 @@ const useScrollAnimation = (): [
 
   // Hook to detect when the section is in view
   const { ref, inView } = useInView({
-    threshold: 0.3, // Trigger animation when 40% of the section is visible
+    threshold: 0.3,
   });
 
   useEffect(() => {
