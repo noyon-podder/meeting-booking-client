@@ -1,16 +1,12 @@
-import { useState } from "react";
 import { TRoom } from "@/types";
 import { Link } from "react-router-dom";
 import useScrollAnimation from "@/hooks/useScrollAnimation";
 import { motion } from "framer-motion";
 import { fadeVariants } from "@/utils/variants";
-import { IoIosPricetags, MdPeople } from "../icons/ReactIcons";
-
-type RoomCardProps = {
-  room: TRoom;
-};
-
-const RoomCard = ({ room }: RoomCardProps) => {
+import { IoIosPricetags, MdPeople } from "../../icons/ReactIcons";
+import ImageSlider from "../ImageSlider";
+import { useState } from "react";
+const RoomSliderCard = ({ room }: { room: TRoom }) => {
   const [controls, ref] = useScrollAnimation();
   const [isHovered, setIsHovered] = useState(false);
   return (
@@ -18,15 +14,12 @@ const RoomCard = ({ room }: RoomCardProps) => {
       ref={ref}
       animate={controls}
       variants={fadeVariants}
+      className="border bg-color-lightColor dark:bg-color-cardColor"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="border bg-color-lightColor dark:bg-color-cardColor"
     >
-      <img
-        src={isHovered ? room.images[0] : room.images[1]}
-        alt={room.name}
-        className="w-full h-48 object-cover"
-      />
+      {/* custom made image slider */}
+      <ImageSlider images={room?.images} isHovered={isHovered} />
       <div className="p-4">
         <h3 className="text-lg font-semibold dark:text-color-darkHeading text-color-darkBaseColor">
           {room.name}
@@ -66,4 +59,4 @@ const RoomCard = ({ room }: RoomCardProps) => {
   );
 };
 
-export default RoomCard;
+export default RoomSliderCard;

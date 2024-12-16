@@ -8,6 +8,7 @@ import {
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import Container from "@/components/Container";
 
 const ServiceAdvertisement = () => {
   // Set up animation controls
@@ -45,12 +46,12 @@ const ServiceAdvertisement = () => {
   };
 
   return (
-    <>
+    <Container>
       <section
         ref={ref}
-        className="service-advertisement py-10 lg:py-16 light:bg-gray-100"
+        className="service-advertisement pt-10 lg:pt-16 light:bg-gray-100"
       >
-        <div className="container mx-auto text-center">
+        <div className="text-center">
           <h2 className="lg:text-4xl font-mono text-2xl font-bold lg:mb-14 mb-10 text-color-heading dark:text-color-darkHeading">
             Service Advertisement
           </h2>
@@ -147,7 +148,7 @@ const ServiceAdvertisement = () => {
           </motion.div>
         </div>
       </section>
-    </>
+    </Container>
   );
 };
 

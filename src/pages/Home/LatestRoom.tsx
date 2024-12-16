@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import useScrollAnimation from "@/hooks/useScrollAnimation";
 import { fadeVariants } from "@/utils/variants";
 import { TRoom } from "@/types";
-import RoomCard from "@/components/RoomCard";
+import RoomCard from "@/components/card/RoomCard";
 import Container from "@/components/Container";
 
 const LatestRoom = () => {
