@@ -4,8 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 const MenuItems = () => {
   const router = useLocation();
 
-  console.log(router);
-
   return (
     <>
       <ul className="items-center xl:gap-3 lg:gap-1 hidden lg:flex">

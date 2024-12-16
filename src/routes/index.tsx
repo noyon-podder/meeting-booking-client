@@ -55,11 +55,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/meeting-rooms/:id",
-        element: (
-          <ProtectedRoute>
-            <MeetingRoomDetails />
-          </ProtectedRoute>
-        ),
+        element: <MeetingRoomDetails />,
       },
       {
         path: "/meeting-rooms/:id/booking-slots",
