@@ -1,6 +1,20 @@
+/**
+ * Title: Write a program using JavaScript on ImageSlider
+ * Author: Noyon Podder
+ * Portfolio: https://dev-noyon.vercel.app/
+ * Linkedin: https://linkedin.com/in/dev-noyon
+ * GitHub: https://github.com/noyon-podder
+ * Facebook: https://www.facebook.com/noyon.Podder7/
+ * Instagram: https://www.instagram.com/noyon.podder7/
+ * Twitter: https://x.com/noyon_podder7
+ * WhatsApp: https://wa.me/8801752441505
+ * Telegram: https://t.me/Noyonpodder7
+ * Date: 16 December 2024
+ */
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
 
 const ImageSlider = ({
   images,
@@ -11,6 +25,7 @@ const ImageSlider = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const handlePrev = () => {
     setDirection(-1);
@@ -39,6 +54,22 @@ const ImageSlider = ({
 
   return (
     <div className="relative w-full h-48 overflow-hidden">
+      {/* favorite button */}
+      <button
+        className={`${
+          isHovered
+            ? "absolute top-2 right-2 z-10 bg-white text-color-darkBaseColor p-1 rounded-full shadow-lg hover:shadow-none shadow-black transition-shadow"
+            : "hidden"
+        }`}
+        onClick={() => setIsFavorite(!isFavorite)}
+      >
+        {isFavorite ? (
+          <Heart size={18} className="fill-current text-color-baseLightColor" />
+        ) : (
+          <Heart size={18} className="" />
+        )}
+      </button>
+
       <AnimatePresence initial={false} custom={direction}>
         <motion.img
           key={currentIndex}
