@@ -7,14 +7,14 @@ import WhyChooseUs from "./WhyChooseUs";
 
 const HomePage = () => {
   return (
-    <div className="">
+    <>
       <HeroBanner />
       <ServiceAdvertisement />
       <LatestRoom />
       <Testimonials />
       <NewsletterSignup />
       <WhyChooseUs />
-    </div>
+    </>
   );
 };
 

@@ -55,7 +55,7 @@ const RoomCard = ({ room }: RoomCardProps) => {
 
         <div className="flex justify-end mt-3">
           <Link
-            to={room._id}
+            to={`/meeting-rooms/${room._id}`}
             className="text-color-baseColor font-medium hover:underline block dark:text-color-baseLightColor"
           >
             See Details

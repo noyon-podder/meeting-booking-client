@@ -21,3 +21,4 @@ const authApi = baseApi.injectEndpoints({
 });
 
 export const { useCreateUserMutation, useLoginMutation } = authApi;
+// ! WHEN CREATE USER GET ERROR

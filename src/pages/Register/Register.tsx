@@ -25,7 +25,7 @@ const Register = () => {
     try {
       const res: any = await createUser(userData);
 
-    
+      console.log(res);
 
       if (res.error) {
         toast.error(res.error.data.message);
@@ -33,7 +33,6 @@ const Register = () => {
         toast.success("Registration Successfully ☺");
         navigate("/login");
       }
-      
     } catch (err) {
       toast.error("Something went wrong");
       console.log(err);

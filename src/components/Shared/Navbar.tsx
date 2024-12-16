@@ -3,7 +3,6 @@ import MenuItems from "@/pages/Home/MenuItems";
 import { ModeToggle } from "./ModeToggle";
 import SidebarMenuItems from "@/pages/Home/SidebarMenuItems";
 import Container from "../Container";
-
 import { useAppSelector } from "@/redux/hook";
 import { currentUser } from "@/redux/features/auth/authSlice";
 import ProfileAvatar from "./ProfileAvatar";
