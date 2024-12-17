@@ -1,3 +1,17 @@
+/**
+ * Title: Write a program using JavaScript on ServiceAdvertisement
+ * Author: Noyon Podder
+ * Portfolio: https://dev-noyon.vercel.app/
+ * Linkedin: https://linkedin.com/in/dev-noyon
+ * GitHub: https://github.com/noyon-podder
+ * Facebook: https://www.facebook.com/noyon.Podder7/
+ * Instagram: https://www.instagram.com/noyon.podder7/
+ * Twitter: https://x.com/noyon_podder7
+ * WhatsApp: https://wa.me/8801752441505
+ * Telegram: https://t.me/Noyonpodder7
+ * Date: 16 December 2024
+ */
+
 import {
   FaClock,
   FaHeadset,
@@ -8,6 +22,7 @@ import {
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import Container from "@/components/Container";
 
 const ServiceAdvertisement = () => {
   // Set up animation controls
@@ -45,12 +60,12 @@ const ServiceAdvertisement = () => {
   };
 
   return (
-    <>
+    <Container>
       <section
         ref={ref}
-        className="service-advertisement py-10 lg:py-16 light:bg-gray-100"
+        className="service-advertisement pt-10 lg:pt-16 light:bg-gray-100"
       >
-        <div className="container mx-auto text-center">
+        <div className="text-center">
           <h2 className="lg:text-4xl font-mono text-2xl font-bold lg:mb-14 mb-10 text-color-heading dark:text-color-darkHeading">
             Service Advertisement
           </h2>
@@ -147,7 +162,7 @@ const ServiceAdvertisement = () => {
           </motion.div>
         </div>
       </section>
-    </>
+    </Container>
   );
 };
 

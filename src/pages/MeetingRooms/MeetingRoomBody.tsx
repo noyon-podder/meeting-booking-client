@@ -1,6 +1,6 @@
 import Container from "@/components/Container";
 import ProductLoadingSkeleton from "@/components/ProductLoadingSkeleton";
-import RoomCard from "@/components/RoomCard";
+import RoomCard from "@/components/card/RoomCard";
 import { useGetAllRoomsQuery } from "@/redux/features/rooms/roomApi";
 import {
   setCapacity,
