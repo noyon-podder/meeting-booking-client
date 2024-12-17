@@ -8,8 +8,8 @@ export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: async (args, api, extraOptions) => {
     const baseQuery = fetchBaseQuery({
-      // baseUrl: `${import.meta.env.VITE_SERVER_URL}/api`,
-      baseUrl: `http://localhost:5000/api`,
+      baseUrl: `${import.meta.env.VITE_SERVER_URL}/api`,
+      // baseUrl: `http://localhost:5000/api`,
       prepareHeaders: (headers) => {
         const token = (api.getState() as RootState).auth.token;
 
