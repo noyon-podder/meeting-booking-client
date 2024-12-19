@@ -19,7 +19,7 @@ import Navbar from "@/components/Shared/Navbar";
 import { Button } from "@/components/ui/button";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import backgroundImage from "/register.png";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import loginValidationSchema from "@/schema/loginValidationSchema";
 import { Loader2, User, UserPlus } from "lucide-react";
@@ -32,12 +32,12 @@ import { useState } from "react";
 // import { TResponseRedux } from "@/types";
 
 const userDefaultValue = {
-  email: "web.programming12.6@gmail.com",
-  password: "@noyon070",
+  email: "user@gmail.com",
+  password: "123456",
 };
 
 const adminDefaultValue = {
-  email: "noyon.podder7@gmail.com",
+  email: "admin@gmail.com",
   password: "123456",
 };
 
@@ -45,8 +45,8 @@ const Login = () => {
   const [userLogin, { isLoading }] = useLoginMutation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const location = useLocation();
-  const form = location?.state?.from?.pathname || "/";
+  // const location = useLocation();
+  // const form = location?.state?.from?.pathname || "/";
   const [role, setRole] = useState<"user" | "admin" | null>(null);
 
   const handleLoginForm: SubmitHandler<FieldValues> = async (data) => {
@@ -58,7 +58,7 @@ const Login = () => {
     try {
       const res: any = await userLogin(userData);
 
-      const user = verifyToken(res?.data.token);
+      const user: any = verifyToken(res?.data.token);
 
       const currentUser = {
         user: user,
@@ -72,7 +72,11 @@ const Login = () => {
         toast.error(res.error.data.message);
       } else {
         toast.success("Login Successfully ☺");
-        navigate(form, { replace: true });
+        if (user?.role === "admin") {
+          navigate("/dashboard");
+        } else {
+          navigate("/");
+        }
       }
     } catch (err) {
       toast.error("Invalid Credentials");
@@ -82,11 +86,7 @@ const Login = () => {
 
   // Toggle between user and admin login
   const handleRoleToggle = (newRole: "user" | "admin") => {
-    console.log(newRole);
-    setRole(newRole); // Set the new role
-    // const defaultValues =
-    //   newRole === "admin" ? adminDefaultValue : userDefaultValue;
-    // reset(defaultValues);
+    setRole(newRole);
   };
 
   return (
