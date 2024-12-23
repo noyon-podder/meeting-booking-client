@@ -1,45 +1,53 @@
+/**
+ * Title: Write a program using TypeScript on Login
+ * Author: Noyon Podder
+ * Portfolio: https://dev-noyon.vercel.app/
+ * Linkedin: https://linkedin.com/in/dev-noyon
+ * GitHub: https://github.com/noyon-podder
+ * Facebook: https://www.facebook.com/noyon.Podder7/
+ * Instagram: https://www.instagram.com/noyon.podder7/
+ * Twitter: https://x.com/noyon_podder7
+ * WhatsApp: https://wa.me/8801752441505
+ * Telegram: https://t.me/Noyonpodder7
+ * Date: 19 December 2024
+ */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import GlobalForm from "@/components/form/GlobalForm";
 import GlobalInput from "@/components/form/GlobalInput";
 import Navbar from "@/components/Shared/Navbar";
 import { Button } from "@/components/ui/button";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import backgroundImage from "/register.png";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import loginValidationSchema from "@/schema/loginValidationSchema";
-import { Loader2 } from "lucide-react";
+import { Loader2, User, UserPlus } from "lucide-react";
 import toast from "react-hot-toast";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { useAppDispatch } from "@/redux/hook";
 import { setUser } from "@/redux/features/auth/authSlice";
 import { verifyToken } from "@/utils/verifyToken";
+import { useState } from "react";
 // import { TResponseRedux } from "@/types";
 
-// type TLoginResponse = {
-//   data: {
-//     _id: string;
-//     name: string;
-//     email: string;
-//     phone: string;
-//     address: string;
-//     role: string;
-//     createdAt: string;
-//     updatedAt: string;
-//     __v: number;
-//   };
-//   token: string;
-// };
-// type LoginFormValues = {
-//   email: string;
-//   password: string;
-// };
+const userDefaultValue = {
+  email: "user@gmail.com",
+  password: "123456",
+};
+
+const adminDefaultValue = {
+  email: "admin@gmail.com",
+  password: "123456",
+};
 
 const Login = () => {
   const [userLogin, { isLoading }] = useLoginMutation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const location = useLocation();
-  const form = location?.state?.from?.pathname || "/";
+  // const location = useLocation();
+  // const form = location?.state?.from?.pathname || "/";
+  const [role, setRole] = useState<"user" | "admin" | null>(null);
 
   const handleLoginForm: SubmitHandler<FieldValues> = async (data) => {
     const userData = {
@@ -50,7 +58,7 @@ const Login = () => {
     try {
       const res: any = await userLogin(userData);
 
-      const user = verifyToken(res?.data.token);
+      const user: any = verifyToken(res?.data.token);
 
       const currentUser = {
         user: user,
@@ -64,12 +72,21 @@ const Login = () => {
         toast.error(res.error.data.message);
       } else {
         toast.success("Login Successfully ☺");
-        navigate(form, { replace: true });
+        if (user?.role === "admin") {
+          navigate("/dashboard");
+        } else {
+          navigate("/");
+        }
       }
     } catch (err) {
       toast.error("Invalid Credentials");
       console.log(err);
     }
+  };
+
+  // Toggle between user and admin login
+  const handleRoleToggle = (newRole: "user" | "admin") => {
+    setRole(newRole);
   };
 
   return (
@@ -93,6 +110,13 @@ const Login = () => {
           <GlobalForm
             onSubmit={handleLoginForm}
             resolver={zodResolver(loginValidationSchema)}
+            defaultValues={
+              role === "admin"
+                ? adminDefaultValue
+                : role === "user"
+                ? userDefaultValue
+                : { email: "", password: "" }
+            }
           >
             <GlobalInput
               type="text"
@@ -130,6 +154,30 @@ const Login = () => {
               </>
             )}
           </GlobalForm>
+
+          <div className="w-full flex items-center gap-5 mt-5">
+            <Button
+              disabled={role === "admin"} // Disable if already selected
+              onClick={() => handleRoleToggle("admin")}
+              className={`w-full bg-transparent text-primary hover:bg-green-600 hover:text-white border border-primary font-medium flex items-center gap-2 ${
+                role === "admin" ? "bg-green-600 text-white" : "bg-transparent"
+              }`}
+              variant="outline"
+            >
+              <UserPlus size={18} />
+              Admin
+            </Button>
+            <Button
+              disabled={role === "user"} // Disable if already selected
+              onClick={() => handleRoleToggle("user")}
+              className={`w-full bg-transparent text-primary hover:bg-green-600 hover:text-white border border-primary font-medium flex items-center gap-2 ${
+                role === "user" ? "bg-green-600 text-white" : "bg-transparent"
+              }`}
+            >
+              <User size={18} />
+              User
+            </Button>
+          </div>
 
           <p className="dark:text-color-darkHeading text-color-textColor mt-7 text-center">
             Already have an account?{" "}

@@ -13,13 +13,14 @@
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { ReactNode, useEffect } from "react";
 import {
   FieldValues,
   FormProvider,
   SubmitHandler,
   useForm,
 } from "react-hook-form";
-import { ReactNode } from "react";
 
 type TFormConfig = {
   defaultValues?: Record<string, any>;
@@ -31,26 +32,20 @@ type TGlobalFormProps = {
   onSubmit: (data: FieldValues) => void;
 } & TFormConfig;
 
-// declare the from config to set the value in useForm
-const formConfig: TFormConfig = {};
-
 const GlobalForm = ({
   children,
   onSubmit,
   defaultValues,
   resolver,
 }: TGlobalFormProps) => {
-  // if default values have set default values in the config
-  if (defaultValues) {
-    formConfig["defaultValues"] = defaultValues;
-  }
+  const methods = useForm({ resolver, defaultValues });
 
-  // set validation form data
-  if (resolver) {
-    formConfig["resolver"] = resolver;
-  }
-
-  const methods = useForm(formConfig);
+  // Watch for changes in defaultValues and reset the form
+  useEffect(() => {
+    if (defaultValues) {
+      methods.reset(defaultValues);
+    }
+  }, [defaultValues, methods]);
 
   const submit: SubmitHandler<FieldValues> = (data) => {
     onSubmit(data);

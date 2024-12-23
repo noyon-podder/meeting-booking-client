@@ -1,8 +1,28 @@
+import { Charts } from "@/components/charts/Charts";
+
+import DashboardStaticsCard from "./Home/DashboardStaticsCard";
+
+import SimpleRadarChart from "@/components/charts/SimpleRadarChart";
+
+import { AllSlotTable } from "./slotManagement/AllSlotTable";
+
 const Dashboard = () => {
   return (
-    <div className="h-screen flex items-center justify-center">
-      <h2 className="text-4xl font-extrabold">Coming Soon</h2>
-    </div>
+    <>
+      <DashboardStaticsCard />
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:px-10 px-5 py-5">
+        <Charts />
+        <div className="bg-white dark:bg-color-cardColor md:h-auto h-[300px] rounded-lg">
+          <SimpleRadarChart />
+        </div>
+      </div>
+
+      <div className="lg:px-10 px-5 ">
+        {/* <AllRoomTable /> */}
+        <AllSlotTable />
+      </div>
+    </>
   );
 };
 
