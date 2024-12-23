@@ -30,28 +30,28 @@ const DashboardStaticsCard = () => {
         <StaticsCard
           icon={SquareActivity}
           title={"Total Room"}
-          amount={1200}
+          amount={16}
           bgColor={"bg-green-500/30"}
           iconColor={"text-green-500"}
         />
         <StaticsCard
           icon={BookMarked}
           title={"Total Bookings"}
-          amount={1200}
+          amount={7}
           bgColor={"bg-purple-500/30"}
           iconColor={"text-purple-500"}
         />
         <StaticsCard
           icon={UsersRound}
           title={"Total Users"}
-          amount={1200}
+          amount={18}
           bgColor={"bg-pink-500/30"}
           iconColor={"text-pink-500"}
         />
         <StaticsCard
           icon={BedSingle}
           title={"Available Slots"}
-          amount={1200}
+          amount={0}
           bgColor={"bg-red-500/30"}
           iconColor={"text-red-500"}
         />

@@ -4,7 +4,7 @@ import DashboardStaticsCard from "./Home/DashboardStaticsCard";
 
 import SimpleRadarChart from "@/components/charts/SimpleRadarChart";
 
-import { AllSlotTable } from "./slotManagement/AllSlotTable";
+import AllBooking from "./booking/AllBooking";
 
 const Dashboard = () => {
   return (
@@ -19,8 +19,9 @@ const Dashboard = () => {
       </div>
 
       <div className="lg:px-10 px-5 ">
+        <h2 className="text-2xl font-semibold mb-5 mt-10">Slot Booking List</h2>
         {/* <AllRoomTable /> */}
-        <AllSlotTable />
+        <AllBooking />
       </div>
     </>
   );
