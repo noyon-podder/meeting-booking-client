@@ -22,7 +22,7 @@ export function AllSlotTable() {
   if (isFetching) return <Loading />;
 
   return (
-    <>
+    <div className="bg-white dark:bg-color-cardColor">
       <Table>
         <TableCaption>A list of all room .</TableCaption>
         <TableHeader>
@@ -74,6 +74,6 @@ export function AllSlotTable() {
           ))}
         </TableBody>
       </Table>
-    </>
+    </div>
   );
 }

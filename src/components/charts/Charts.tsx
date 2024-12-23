@@ -47,7 +47,7 @@ export function Charts() {
   return (
     <ChartContainer
       config={chartConfig}
-      className="min-h-[200px] w-full bg-[#fff] dark:bg-color-cardColor"
+      className="min-h-[200px] w-full bg-[#fff] dark:bg-color-cardColor rounded-lg"
     >
       <BarChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />

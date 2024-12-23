@@ -12,12 +12,14 @@
  * Date: 16 December 2024
  */
 
-import { Link } from "react-router-dom";
-import { MdOutlineRoomPreferences } from "react-icons/md";
+import { Link, useLocation } from "react-router-dom";
+import { MdDashboard, MdOutlineRoomPreferences } from "react-icons/md";
 import { FaCheckToSlot } from "react-icons/fa6";
 import { TbBrandBooking } from "react-icons/tb";
 
 const Sidebar = () => {
+  const { pathname } = useLocation();
+
   return (
     <div className="w-[300px] bg-color-darkBaseColor h-screen lg:block hidden fixed top-0 left-0">
       <div className="py-5 border-b border-color-darkBaseColor">
@@ -31,7 +33,23 @@ const Sidebar = () => {
 
       {/* navbar  */}
       <ul className="mt-5">
-        <li className="py-4 px-5 flex items-center gap-4 bg-transparent transform-colors duration-300 hover:bg-color-baseColor cursor-pointer">
+        <li
+          className={`py-4 px-5 flex items-center gap-4  transform-colors duration-300 hover:bg-color-baseColor cursor-pointer ${
+            pathname === "/dashboard" ? "bg-color-baseColor" : "bg-transparent"
+          }`}
+        >
+          <MdDashboard className="text-color-lightColor text-xl" />
+          <Link to="/dashboard" className="text-color-lightColor">
+            Dashboard
+          </Link>
+        </li>
+        <li
+          className={`py-4 px-5 flex items-center gap-4  transform-colors duration-300 hover:bg-color-baseColor cursor-pointer ${
+            pathname === "/dashboard/room-management"
+              ? "bg-color-baseColor"
+              : "bg-transparent"
+          }`}
+        >
           <MdOutlineRoomPreferences className="text-color-lightColor text-xl" />
           <Link
             to="/dashboard/room-management"
@@ -41,7 +59,13 @@ const Sidebar = () => {
           </Link>
         </li>
 
-        <li className="py-4 px-5 flex items-center gap-4 bg-transparent transform-colors duration-300 hover:bg-color-baseColor cursor-pointer">
+        <li
+          className={`py-4 px-5 flex items-center gap-4 transform-colors duration-300 hover:bg-color-baseColor cursor-pointer ${
+            pathname === "/dashboard/slot-management"
+              ? "bg-color-baseColor"
+              : "bg-transparent"
+          }`}
+        >
           <FaCheckToSlot className="text-color-lightColor text-xl" />
           <Link
             to="/dashboard/slot-management"
@@ -50,7 +74,13 @@ const Sidebar = () => {
             Slot Management
           </Link>
         </li>
-        <li className="py-4 px-5 flex items-center gap-4 bg-transparent transform-colors duration-300 hover:bg-color-baseColor cursor-pointer">
+        <li
+          className={`py-4 px-5 flex items-center gap-4  transform-colors duration-300 hover:bg-color-baseColor cursor-pointer ${
+            pathname === "/dashboard/booking-management"
+              ? "bg-color-baseColor"
+              : "bg-transparent"
+          }`}
+        >
           <TbBrandBooking className="text-color-lightColor text-xl" />
           <Link
             to="/dashboard/booking-management"
