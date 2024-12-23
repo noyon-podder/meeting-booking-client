@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Loading from "@/components/Loading";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -19,12 +20,11 @@ import toast from "react-hot-toast";
 import DeleteBookingModal from "./DeleteBookingModal";
 
 const AllBooking = () => {
-  const { data: allBookingData, isFetching } =
-    useGetAllBookingsQuery(undefined);
+  const { data: allBookingData, isLoading } = useGetAllBookingsQuery(undefined);
 
   const [updateBookingStatus] = useUpdateBookingStatusMutation();
 
-  if (isFetching) return <Loading />;
+  if (isLoading) return <Loading />;
 
   const handleBookingStatus = async (
     event: ChangeEvent<HTMLSelectElement>,
@@ -56,24 +56,40 @@ const AllBooking = () => {
   };
 
   return (
-    <>
+    <div className="bg-white dark:bg-color-cardColor">
       <Table>
         <TableCaption>A list of all booking .</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="">Room Name</TableHead>
-            <TableHead>User Name</TableHead>
-            <TableHead>Date</TableHead>
-            <TableHead className="">Time</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Approve/Reject</TableHead>
-            <TableHead>Action</TableHead>
+            <TableHead className="dark:text-white text-color-heading font-semibold text-base">
+              Room Name
+            </TableHead>
+            <TableHead className="dark:text-white text-color-heading font-semibold text-base">
+              User Name
+            </TableHead>
+            <TableHead className="dark:text-white text-color-heading font-semibold text-base">
+              Date
+            </TableHead>
+            <TableHead className="dark:text-white text-color-heading font-semibold text-base">
+              Time
+            </TableHead>
+            <TableHead className="dark:text-white text-color-heading font-semibold text-base">
+              Status
+            </TableHead>
+            <TableHead className="dark:text-white text-color-heading font-semibold text-base">
+              Approve/Reject
+            </TableHead>
+            <TableHead className="dark:text-white text-color-heading font-semibold text-base">
+              Action
+            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {allBookingData?.data?.map((item: TBooking) => (
             <TableRow key={item._id}>
-              <TableCell className="font-medium">{item?.room?.name}</TableCell>
+              <TableCell className="font-normal text-sm">
+                {item?.room?.name}
+              </TableCell>
               <TableCell>{item?.user?.name}</TableCell>
               <TableCell>{item?.date}</TableCell>
               <TableCell>
@@ -132,7 +148,7 @@ const AllBooking = () => {
           ))}
         </TableBody>
       </Table>
-    </>
+    </div>
   );
 };
 

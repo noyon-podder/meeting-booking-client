@@ -16,10 +16,9 @@ import SlotUpdateModal from "./SlotUpdateModal";
 // import RoomUpdateModal from "./RoomUpdateModal";
 
 export function AllSlotTable() {
-  const { data: slotData, isFetching } = useGetAllSlotsQuery({});
+  const { data: slotData, isLoading } = useGetAllSlotsQuery({});
 
-  console.log({ slotData });
-  if (isFetching) return <Loading />;
+  if (isLoading) return <Loading />;
 
   return (
     <div className="bg-white dark:bg-color-cardColor">
