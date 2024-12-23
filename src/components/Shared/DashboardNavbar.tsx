@@ -19,7 +19,7 @@ import DashboardSidebarMenuItems from "@/pages/Dashboard/DashboardSidebarMenuIte
 
 const DashboardNavbar = () => {
   return (
-    <div className="lg:py-4 py-4 bg-[#f7f7f7] dark:bg-color-darkBaseColor  px-5 lg:px-10  border-b border-[#f7f7f7] w-full dark:border-color-baseColor">
+    <div className="lg:py-4 py-4   px-5 lg:px-10 bg-white dark:bg-color-cardColor  border-b border-[#f7f7f7] w-full dark:border-color-darkBaseColor">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-5">
           {/* for mobile device menu bar show  */}

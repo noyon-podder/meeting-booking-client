@@ -18,9 +18,9 @@ import DashboardNavbar from "../Shared/DashboardNavbar";
 
 const DashboardLayout = () => {
   return (
-    <div className="flex">
+    <div className="flex bg-[#EEF0F5] dark:bg-transparent">
       <Sidebar />
-      <div className="lg:ml-[300px] w-full">
+      <div className="lg:ml-[300px] w-full ">
         <div className="">
           <DashboardNavbar />
         </div>

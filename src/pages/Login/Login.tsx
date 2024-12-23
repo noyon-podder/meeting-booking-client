@@ -1,5 +1,5 @@
 /**
- * Title: Write a program using JavaScript on Login
+ * Title: Write a program using TypeScript on Login
  * Author: Noyon Podder
  * Portfolio: https://dev-noyon.vercel.app/
  * Linkedin: https://linkedin.com/in/dev-noyon
