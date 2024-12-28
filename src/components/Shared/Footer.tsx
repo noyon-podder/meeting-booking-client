@@ -13,18 +13,14 @@
  */
 
 import { Link } from "react-router-dom";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaXTwitter,
-} from "../../icons/ReactIcons";
+
 import Container from "../Container";
+import FooterBottom from "./FooterBottom";
 
 const Footer = () => {
   return (
     <>
-      <footer className="bg-color-lightColor dark:bg-[#0c101b] border-t py-5 lg:py-10">
+      <footer className="dark:bg-color-darkBaseColor bg-color-baseColor border-t py-5 lg:py-5 border-b  border-color-baseLightColor">
         <Container>
           <div className="flex flex-col items-center text-center">
             <Link to="/">
@@ -62,46 +58,8 @@ const Footer = () => {
             </div>
           </div>
         </Container>
-        <hr className="my-6 border-gray-200 md:my-10 dark:border-color-darkBaseColor" />
-
-        <Container>
-          <div className="flex flex-col items-center sm:flex-row sm:justify-between">
-            <p className="text-sm text-gray-500 dark:text-color-darkHeading">
-              © Copyright 2024. All Rights Reserved By Noyon Podder.
-            </p>
-
-            <div className="flex items-center gap-4 mt-7 lg:mt-0">
-              <Link
-                to=""
-                className="w-8 h-8 leading-8 border flex items-center justify-center rounded-full border-color-baseColor text-color-baseColor bg-transparent hover:bg-color-baseColor hover:text-color-lightColor duration-300 shadow-sm"
-              >
-                <FaFacebookF size={18} className="" />
-              </Link>
-
-              <Link
-                to=""
-                className="w-8 h-8 leading-8 border flex items-center justify-center rounded-full border-color-baseColor text-color-baseColor bg-transparent hover:bg-color-baseColor hover:text-color-lightColor duration-300 shadow-sm"
-              >
-                <FaInstagram size={18} className="" />
-              </Link>
-
-              <Link
-                to=""
-                className="w-8 h-8 leading-8 border flex items-center justify-center rounded-full border-color-baseColor text-color-baseColor bg-transparent hover:bg-color-baseColor hover:text-color-lightColor duration-300 shadow-sm"
-              >
-                <FaLinkedinIn size={18} className="" />
-              </Link>
-
-              <Link
-                to=""
-                className="w-8 h-8 leading-8 border flex items-center justify-center rounded-full border-color-baseColor text-color-baseColor bg-transparent hover:bg-color-baseColor hover:text-color-lightColor duration-300 shadow-sm"
-              >
-                <FaXTwitter size={18} className="" />
-              </Link>
-            </div>
-          </div>
-        </Container>
       </footer>
+      <FooterBottom />
     </>
   );
 };

@@ -10,12 +10,12 @@ const HomePage = () => {
   return (
     <>
       <HeroBanner />
-      <PopularRooms />
       <ServiceAdvertisement />
+      <PopularRooms />
       <LatestRoom />
       <Testimonials />
-      <NewsletterSignup />
       <WhyChooseUs />
+      <NewsletterSignup />
     </>
   );
 };

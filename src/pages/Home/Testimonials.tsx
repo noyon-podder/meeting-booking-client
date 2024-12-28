@@ -3,7 +3,7 @@ import SwiperSliderWrapper from "./SwiperSliderWrapper";
 
 const Testimonials = () => {
   return (
-    <div className="lg:py-16 py-10 ">
+    <div className="lg:pb-16 pb-10 ">
       <Container>
         <div>
           <h2 className="lg:text-4xl text-2xl font-bold lg:mb-10 mb-5 text-color-heading dark:text-color-darkHeading text-center font-mono">
