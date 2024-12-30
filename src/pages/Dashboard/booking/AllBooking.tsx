@@ -41,15 +41,11 @@ const AllBooking = () => {
       const res: any = await updateBookingStatus(bookingStatus);
 
       if (res.error) {
-        // Revert status on error
-        // setApproveOrReject("");
         toast.error(res.error.data.message);
       } else {
         toast.success("Booking status updated successfully");
       }
     } catch (err) {
-      // Revert status on error
-      // setApproveOrReject("");
       toast.error("Something went wrong");
       console.log(err);
     }
