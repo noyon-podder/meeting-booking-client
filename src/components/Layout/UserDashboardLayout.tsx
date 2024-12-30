@@ -1,0 +1,33 @@
+/**
+ * Title: Write a program using TypeScript on UserDashboardLayout
+ * Author: Noyon Podder
+ * Portfolio: https://dev-noyon.vercel.app/
+ * Linkedin: https://linkedin.com/in/dev-noyon
+ * GitHub: https://github.com/noyon-podder
+ * Facebook: https://www.facebook.com/noyon.Podder7/
+ * Instagram: https://www.instagram.com/noyon.podder7/
+ * Twitter: https://x.com/noyon_podder7
+ * WhatsApp: https://wa.me/8801752441505
+ * Telegram: https://t.me/Noyonpodder7
+ * Date: 31 December 2024
+ */
+
+import { Outlet } from "react-router-dom";
+import DashboardNavbar from "../Shared/DashboardNavbar";
+import Sidebar from "../Shared/Sidebar";
+
+const UserDashboardLayout = () => {
+  return (
+    <div className="flex bg-[#EEF0F5] dark:bg-transparent">
+      <Sidebar />
+      <div className="lg:ml-[300px] w-full ">
+        <div className="">
+          <DashboardNavbar />
+        </div>
+        <Outlet />
+      </div>
+    </div>
+  );
+};
+
+export default UserDashboardLayout;

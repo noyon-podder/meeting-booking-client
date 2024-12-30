@@ -28,7 +28,7 @@ const MeetingRoomBody = () => {
 
   const {
     data: roomData,
-    isFetching,
+    isLoading,
     error,
   } = useGetAllRoomsQuery({
     searchTerm: debounceValue,
@@ -97,8 +97,8 @@ const MeetingRoomBody = () => {
                 No Data Found
               </h2>
             )}
-            {/* {isLoading ? <ProductLoadingSkeleton /> : null} */}
-            {isFetching ? (
+
+            {isLoading ? (
               <ProductLoadingSkeleton />
             ) : (
               <motion.div

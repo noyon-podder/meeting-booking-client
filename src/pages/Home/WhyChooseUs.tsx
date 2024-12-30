@@ -2,6 +2,7 @@ import { FaCalendarCheck, FaLock, FaThumbsUp } from "../../icons/ReactIcons";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import Container from "@/components/Container";
 
 const WhyChooseUs = () => {
   // Set up animation controls
@@ -42,12 +43,12 @@ const WhyChooseUs = () => {
       ref={ref}
       className="why-choose-us py-10 lg:py-16 bg-color-lightColor dark:bg-color-cardColor"
     >
-      <div className="container mx-auto text-center">
+      <Container>
         <h2 className="lg:text-4xl text-2xl font-bold lg:mb-10 mb-5 text-color-heading dark:text-color-darkHeading text-center font-mono">
           Why Choose Us?
         </h2>
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
           initial="hidden"
           animate={controls}
           exit="exit"
@@ -117,7 +118,7 @@ const WhyChooseUs = () => {
             </p>
           </motion.div>
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 };

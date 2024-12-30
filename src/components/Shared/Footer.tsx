@@ -18,6 +18,7 @@ import FooterBottom from "./FooterBottom";
 import Logo from "/logo.svg";
 import { Check } from "lucide-react";
 import Room from "/3.jpg";
+import Banner from "/aboutBanner.jpg";
 
 const Footer = () => {
   const footerLinks = [
@@ -30,9 +31,18 @@ const Footer = () => {
   ];
   return (
     <>
-      <footer className="dark:bg-color-darkBaseColor bg-color-baseColor border-t py-5 lg:py-10 border-b  border-color-baseLightColor dark:border-color-cardColor ">
+      <footer
+        className="relative w-full h-auto  flex items-center justify-center py-5 lg:py-10"
+        style={{
+          backgroundImage: `url(${Banner})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        // className="dark:bg-color-darkBaseColor bg-color-baseColor border-t py-5 lg:py-10 border-b  border-color-baseLightColor dark:border-color-cardColor "
+      >
+        <div className="gradient-overlay opacity-90" />
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4  lg:pt-10 pt-5">
+          <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-4  lg:pt-10 pt-5 ">
             <div className="lg:col-span-3 pr-5">
               <Link to="/" className="w-[180px] h-auto flex items-center">
                 <img src={Logo} alt="" className="w-full h-full" />
@@ -93,8 +103,8 @@ const Footer = () => {
                     <div className="w-[100px]">
                       <img src={Room} alt="" />
                     </div>
-                    <p className="text-gray-300 text-sm cursor-pointer hover:text-white">
-                      Lorem ipsum dolor sit amet, hello
+                    <p className="text-gray-300 font-semibold text-sm cursor-pointer hover:text-white">
+                      Teleconference hub
                     </p>
                   </div>
                 </li>
@@ -103,8 +113,8 @@ const Footer = () => {
                     <div className="w-[100px]">
                       <img src={Room} alt="" />
                     </div>
-                    <p className="text-gray-300 text-sm cursor-pointer hover:text-white">
-                      Lorem ipsum dolor sit amet, hello
+                    <p className="text-gray-300 font-semibold text-sm cursor-pointer hover:text-white">
+                      Conference room
                     </p>
                   </div>
                 </li>
@@ -112,7 +122,7 @@ const Footer = () => {
             </div>
 
             <div className="lg:col-span-3">
-              <div className="h-[200px] w-full">
+              <div className="h-[200px] w-full ">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14591.755482822766!2d89.1420171!3d23.89178625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1735497729614!5m2!1sen!2sbd"
                   width="100%"
