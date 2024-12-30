@@ -20,23 +20,18 @@ import Container from "../Container";
 import { useAppSelector } from "@/redux/hook";
 import { currentUser } from "@/redux/features/auth/authSlice";
 import ProfileAvatar from "./ProfileAvatar";
-// import Logo from "/logo-schedule.png";
+import Logo from "/logo.svg";
 
 const Navbar = () => {
   const user = useAppSelector(currentUser);
 
   return (
-    <div className="sticky z-50 top-0 left-0 w-full dark:border-b  dark:bg-color-darkBaseColor bg-color-baseColor py-3">
+    <div className="sticky z-50 top-0 left-0 w-full dark:border-b  dark:bg-color-darkBaseColor bg-color-baseColor py-4">
       <Container>
         <div className="flex items-center justify-between">
-          {/* <div className="w-[180px] block h-[80px]"> */}
-          <Link to="/" className=" cursor-pointer">
-            <h2 className="text-white lg:text-[32px] text-[22px] font-bold font-mono  ">
-              ScheduliFy
-            </h2>
+          <Link to="/" className="w-[180px] h-auto flex items-center">
+            <img src={Logo} alt="" className="w-full h-full" />
           </Link>
-          {/* <img src={Logo} alt="" className="w-full h-full" /> */}
-          {/* </div> */}
           <div className="hidden lg:block">
             <MenuItems />
           </div>
