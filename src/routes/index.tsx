@@ -1,6 +1,7 @@
 import DashboardLayout from "@/components/Layout/DashboardLayout";
 import MainLayout from "@/components/Layout/MainLayout";
 import ProtectedRoute from "@/components/Layout/ProtectedRoute";
+import UserDashboardLayout from "@/components/Layout/UserDashboardLayout";
 import AboutPage from "@/pages/About/AboutPage";
 import BookingForm from "@/pages/Booking/BookingForm";
 import CheckoutPage from "@/pages/Checkout/CheckoutPage";
@@ -88,7 +89,7 @@ export const router = createBrowserRouter([
     ],
   },
 
-  // dashboard
+  //admin dashboard
   {
     path: "/dashboard",
     element: (
@@ -116,6 +117,26 @@ export const router = createBrowserRouter([
       {
         path: "create-room",
         element: <CreateRoom />,
+      },
+    ],
+  },
+
+  // USER DASHBOARD
+  {
+    path: "/user-dashboard",
+    element: (
+      <ProtectedRoute role="user">
+        <UserDashboardLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        path: "/user-dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "/user-dashboard/my-bookings",
+        element: <MyBookings />,
       },
     ],
   },

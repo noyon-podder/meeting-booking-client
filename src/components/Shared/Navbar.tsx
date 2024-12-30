@@ -51,7 +51,9 @@ const Navbar = () => {
               </>
             )}
 
-            <ModeToggle />
+            <div className="hidden lg:block">
+              <ModeToggle />
+            </div>
 
             {/* for mobile device menu bar show  */}
             <div className="lg:hidden">
